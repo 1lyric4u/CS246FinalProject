@@ -11,7 +11,7 @@ import android.os.Bundle;
  * @author Scott Rutherford, Shanna-Mae Slight, David Rosevear
  */
 
-//This is a test comment
+//This is a test comment- Shanna
 //This is also a comment - Scott
 //This is my comment - David
 

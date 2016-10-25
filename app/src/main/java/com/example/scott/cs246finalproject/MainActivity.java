@@ -13,6 +13,8 @@ import android.os.Bundle;
 
 //This is a test comment
 //This is also a comment - Scott
+//This is my comment - David
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

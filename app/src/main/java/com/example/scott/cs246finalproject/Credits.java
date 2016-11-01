@@ -1,34 +1,37 @@
 package com.example.scott.cs246finalproject;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by scott on 11/1/16.
  */
 
 public class Credits {
 
-    private int count;
+    private ArrayList<Date> creditList;
 
-    // resets first day of the month
-    public static final int RESET_DAY = 1;
-
-    public Credits(){
-        this.count = 0;
-    }
+    public Credits(){    }
 
     public int getCount(){
-        return count;
+        return creditList.size();
     }
 
     public void reset(){
-        // to-do
+        // if any dates are in past, delete from list
     }
 
-    public void decrementCredit(){
-        // to-do
+    public void addCredit(Date newCredit){
+        //add date to list
+        creditList.add(newCredit);
     }
 
-    public boolean isResetDay(){
-        // to-do
+    public boolean useCredit(Date newAppt){
+        // search for oldest date in creditList
+        // check that newAppt date is 3 weeks or less after credit date, if it is, return true and
+        // delete from list
+        // if newAppt date is not, search for next oldest date and rerun
+        // if no credits work, return false
         return false;
     }
 

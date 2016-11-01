@@ -25,13 +25,13 @@ public class CreditsTest {
 
     @Test
     public void reset() throws Exception {
-        credit.addCredit(new Date());
-        assert( credit.getCount() > 0);
+
     }
 
     @Test
     public void addCredit() throws Exception {
-
+        credit.addCredit(new Date());
+        assert( credit.getCount() > 0);
     }
 
     @Test

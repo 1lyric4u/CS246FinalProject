@@ -4,10 +4,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Date;
+
 /**
  * Created by scott on 11/1/16.
  */
 public class CreditsTest {
+
+    private Credits credit = new Credits();
 
     @Before
     public void setUp() throws Exception {
@@ -21,7 +25,8 @@ public class CreditsTest {
 
     @Test
     public void reset() throws Exception {
-
+        credit.addCredit(new Date());
+        assert( credit.getCount() > 0);
     }
 
     @Test

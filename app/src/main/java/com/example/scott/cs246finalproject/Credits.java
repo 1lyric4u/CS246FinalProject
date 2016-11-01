@@ -2,6 +2,7 @@ package com.example.scott.cs246finalproject;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by scott on 11/1/16.
@@ -9,9 +10,11 @@ import java.util.Date;
 
 public class Credits {
 
-    private ArrayList<Date> creditList;
+    private List<Date> creditList;
 
-    public Credits(){    }
+    public Credits(){
+        creditList = new ArrayList<>();
+    }
 
     public int getCount(){
         return creditList.size();

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 /**
  * This class is the starting point for our class final project in CS 246 of Fall 2016.
- * 
+ *
  *
  * @author Scott Rutherford, Shanna-Mae Slight, David Rosevear
  */

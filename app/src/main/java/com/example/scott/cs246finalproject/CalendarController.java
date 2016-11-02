@@ -6,7 +6,7 @@ package com.example.scott.cs246finalproject;
 
 public class CalendarController {
 
-    private CalendarConnecgtor calendar;
+    private CalendarConnector calendar;
 
     private Credits credits;
 

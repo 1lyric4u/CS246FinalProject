@@ -1,12 +1,10 @@
 package com.example.scott.cs246finalproject;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by scott on 11/1/16.
@@ -14,9 +12,9 @@ import java.util.Calendar;
 public class CreditsTest {
 
     private Credits credit = new Credits();
-    private Date inPast = new Date(1990,1,1);
-    private Date good = new Date(2017,1,1);
-    private Date tooFar = new Date(2017,1,23);
+    private Date inPast = new GregorianCalendar(1990, Calendar.JANUARY, 1).getTime();
+    private Date good = new GregorianCalendar(2017, Calendar.JANUARY, 1).getTime();
+    private Date tooFar = new GregorianCalendar(2017,Calendar.JANUARY,23).getTime();
     private Calendar cal = Calendar.getInstance();
     private Date today = cal.getTime();
 

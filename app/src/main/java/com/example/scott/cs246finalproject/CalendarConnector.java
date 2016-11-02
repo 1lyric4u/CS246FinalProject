@@ -7,7 +7,7 @@ import java.util.List;
  * Created by scott on 11/1/16.
  */
 
-public class CalendarConnecgtor {
+public class CalendarConnector {
 
 
     public boolean isValidViwer(){

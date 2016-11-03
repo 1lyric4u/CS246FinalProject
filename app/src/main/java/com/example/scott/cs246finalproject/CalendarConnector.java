@@ -1,6 +1,8 @@
 package com.example.scott.cs246finalproject;
 
 
+import com.google.api.services.calendar.model.Event;
+
 import java.util.List;
 
 /**
@@ -16,19 +18,19 @@ public class CalendarConnector {
         return false;
     }
 
-    public List<Object> getCalendarEvents(){
+    public List<Event> getCalendarEvents(){
         return null;
     }
 
-    public void deleteEvent(Object e){
+    public void deleteEvent(Event e){
 
     }
 
-    public void createEvent(Object e){
+    public void createEvent(Event e){
 
     }
 
-    public boolean moveEvent(Object e){
+    public boolean moveEvent(Event e){
         return false;
     }
 

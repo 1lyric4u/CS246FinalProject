@@ -1,5 +1,7 @@
 package com.example.scott.cs246finalproject;
 
+import com.google.api.services.calendar.model.Event;
+
 import org.junit.Test;
 
 import static junit.framework.Assert.assertFalse;
@@ -20,15 +22,10 @@ public class CalendarConnectorTest {
         assertTrue(connector.isValidViwer(TEST_E_MAIL));
     }
 
-    // instance should be an Event object but
-    // i need to find a way to get google-api imports
-    // to properly resolve first.
-    // Object type will change below, but otherwise the
-    // test is valid.
     @Test
     public void deleteEvent() throws Exception {
-        // change object type here
-        Object event = new Object();
+        // Event object, data irrelevent for this test
+        Event event = new Event();
         // attempt deletion from google calendar
         connector.deleteEvent(event);
         // verify through call to calendar

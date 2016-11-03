@@ -17,9 +17,9 @@ public class CalendarConnectorTest {
     private static String TEST_E_MAIL = "rutherford.scott@gmail.com";
 
     @Test
-    public void isValidViwer() throws Exception {
+    public void isValidViewer() throws Exception {
         // a valid google e-mail account should return true
-        assertTrue(connector.isValidViwer(TEST_E_MAIL));
+        assertTrue(connector.isValidViewer(TEST_E_MAIL));
     }
 
     @Test

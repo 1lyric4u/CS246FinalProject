@@ -14,7 +14,7 @@ public class CalendarConnector {
     // until this project has proper google-api imports available,
     // Event references are replaced with Object references.
     // This will change.
-    public boolean isValidViwer(String id){
+    public boolean isValidViewer(String id){
         return false;
     }
 

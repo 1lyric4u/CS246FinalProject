@@ -1,6 +1,8 @@
 package com.example.scott.cs246finalproject;
 
+import android.app.Activity;
 import android.content.Context;
+import android.test.mock.MockContext;
 import android.view.View;
 import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +29,8 @@ public class CalendarControllerTest {
 
     @Test
     public void update() throws Exception {
-        controller.update((TextView) new Object());
+        Context context = new MockContext();
+        controller.update(new TextView(context));
     }
 
 }

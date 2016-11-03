@@ -24,6 +24,7 @@ public class CalendarConnectorTest {
 
     @Test
     public void deleteEvent() throws Exception {
+
         // Event object, data irrelevent for this test
         Event event = new Event();
         // attempt deletion from google calendar

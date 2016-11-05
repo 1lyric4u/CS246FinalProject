@@ -14,17 +14,13 @@ public class CalendarController {
 
     private Credits credits;
 
-    // These numbers should probably be changed later.
-    public static final int GET_EVENTS = 1;
-    public static final int MOVE_EVENT = 2;
+    public void performAction(View view) {
 
-    public void performAction(int action) {
-        // These could probably also be better implemented, just allowing for a test result
-        // If not one of the allowed actions, do nothing
-        if (action != GET_EVENTS && action != MOVE_EVENT) {
-            // Do nothing, but get out of the method
-            System.out.println("Please perform an acceptable action");
-            return;
+        // For testing purposes
+        if (view.getId() == R.id.buttonYes) {
+            System.out.println("matches");
+        } else {
+            System.out.println("failed");
         }
 
 

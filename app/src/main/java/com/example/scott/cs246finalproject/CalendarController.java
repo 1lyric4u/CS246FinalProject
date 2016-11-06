@@ -3,6 +3,8 @@ package com.example.scott.cs246finalproject;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.google.api.services.calendar.model.Event;
+
 import java.util.Date;
 
 /**
@@ -27,6 +29,31 @@ public class CalendarController {
         return INSTANCE;
     }
 
+    // Should have a parameter, and needs documentation
+    public void cancelAppointment() {
+        // Somehow create the event to pass to the calendar to delete
+        Event event = new Event(); // Needs change!
+
+        // Tell the calendarConnector to remove the event
+        calendar.deleteEvent(event);
+
+        // Add a credit, if applicable
+
+        // Update the app view
+    }
+
+    public void createAppointment() {
+        // May need to check whether a credit is available, if cannot assume this is already checked
+
+        // Tell the calendarConnector to add the event
+
+        // Remove a credit
+
+        // Update the app view
+    }
+
+    // This method may be incorrectly placed - individually activities may decide which view was
+    // acted on, and then call the appropriate function(s) in the controller
     public void actionPerformed(AppCompatActivity activity, View view) {
 
         // For testing purposes

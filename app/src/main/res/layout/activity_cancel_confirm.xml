@@ -41,7 +41,8 @@
         android:layout_toStartOf="@+id/creditMsg"
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="18dp"
-        android:id="@+id/buttonYes" />
+        android:id="@+id/buttonYes"
+        android:onClick="actionPerformed"/>
 
     <Button
         android:text="No"
@@ -50,5 +51,6 @@
         android:layout_alignBottom="@+id/buttonYes"
         android:layout_alignEnd="@+id/textView"
         android:layout_marginEnd="31dp"
-        android:id="@+id/buttonNo" />
+        android:id="@+id/buttonNo"
+        android:onClick="actionPerformed"/>
 </RelativeLayout>

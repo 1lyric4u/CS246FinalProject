@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class CancelConfirm extends AppCompatActivity {
+public class CancelConfirm extends AppCompatActivity implements MVC_View_Interface {
     /* Needs to get date to cancel from home page and display it in TextView ID:apptToCancel*/
 
     /*Displays message saying "You will be given a credit on your homepage which will
@@ -36,6 +36,10 @@ public class CancelConfirm extends AppCompatActivity {
      */
     public void actionPerformed(View view) {
         controller.actionPerformed(this, view);
+    }
+
+    public void update() {
+        // Do Something
     }
 
     /**

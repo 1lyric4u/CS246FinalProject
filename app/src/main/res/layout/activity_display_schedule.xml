@@ -11,16 +11,16 @@
     tools:context="com.example.scott.cs246finalproject.DisplaySchedule">
 
     <Button
-        android:text="Remove Event"
+        android:text="Select Time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="removeEvent"
-        android:id="@+id/btn_remove_event" />
+        android:id="@+id/btn_remove_event"
+        android:onClick="selectTime" />
 
     <TextView
-        android:text="Upcoming Events"
+        android:text="Available Slots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

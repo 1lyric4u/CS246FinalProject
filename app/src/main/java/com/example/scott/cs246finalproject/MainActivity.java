@@ -13,6 +13,15 @@ import android.os.Bundle;
  */
 
 public class MainActivity extends AppCompatActivity {
+    /* Needs to display appointments in list view. You may consider creating a list that stores the
+    * event.getStart() which returns a datetime data type. The list view needs to be clickable and
+    * when clicked, needs to send the event as "eventToSend" to CancelConfirm as an extra.
+    * CancelConfirm is already prepared to handle it*/
+
+    /* Needs to display number of credits available. This should be saved as a Shared Reference.
+    * The id is creditCount*/
+
+    /*The button id:Resched needs to move to the view:ChooseDay. No information needs to be passed*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

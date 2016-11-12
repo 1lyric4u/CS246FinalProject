@@ -25,14 +25,6 @@
         android:id="@+id/apptToCancel"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/apptToCancel"
-        android:layout_toEndOf="@+id/apptToCancel"
-        android:id="@+id/creditMsg"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:text="Yes"
         android:layout_width="wrap_content"
@@ -42,7 +34,7 @@
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="18dp"
         android:id="@+id/buttonYes"
-        android:onClick="actionPerformed"/>
+        android:onClick="cancelAppt"/>
 
     <Button
         android:text="No"
@@ -52,5 +44,13 @@
         android:layout_alignEnd="@+id/textView"
         android:layout_marginEnd="31dp"
         android:id="@+id/buttonNo"
-        android:onClick="actionPerformed"/>
+        android:onClick="returnToMain"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/creditMsg"
+        android:layout_below="@+id/apptToCancel"
+        android:layout_toEndOf="@+id/apptToCancel"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -13,6 +13,7 @@ import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 
 //import CalendarController;
+//import Credits;
 
 import java.util.Date;
 
@@ -24,8 +25,7 @@ public class CancelConfirm extends AppCompatActivity {
     private java.util.Calendar cal = java.util.Calendar.getInstance();
     private Date todayDate = cal.getTime();
     private DateTime today = new DateTime(todayDate);
-    public SharedPreferences creditCount = getSharedPreferences("creditEditor",0); // !!!
-    public SharedPreferences.Editor creditEditor;
+
 
     /*Button ID:buttonNo needs to simply return user to homepage*/
     public void returnToMain() {
@@ -67,14 +67,9 @@ public class CancelConfirm extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //cancel appointment via CalendarController
-                //eventToCancel.cancelAppointment;
+                    //eventToCancel.cancelAppointment;
                 //increment credits
-                credits = creditCount.getInt("get credits", credits); // !!!
-                credits++;
-                creditEditor = creditCount.edit();
-                creditEditor.putInt("change credits",credits); // !!!
-                // Commit the edits
-                creditEditor.commit();
+                    //addCredit(eventTocancel.getStart().getDate());
                 //return to homepage
                 finish();
             }

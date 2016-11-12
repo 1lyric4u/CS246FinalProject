@@ -10,4 +10,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.scott.cs246finalproject.ChooseDay">
 
+    <TextView
+        android:text="Which day would you like to view?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView2"
+        android:layout_centerHorizontal="false" />
+
+    <CalendarView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp"
+        android:id="@+id/calendarView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendarView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/alert" />
 </RelativeLayout>

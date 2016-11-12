@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * Created by scott on 11/1/16.
+ * Created by shanna on 11/1/16.
  */
 public class CreditsTest {
 

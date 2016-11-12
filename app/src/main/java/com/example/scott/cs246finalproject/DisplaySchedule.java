@@ -24,7 +24,7 @@ public class DisplaySchedule extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
     }
 
-    private void removeEvent(View view){
+    private void selectTime(View view){
         // execute controller method and update UI
 
     }

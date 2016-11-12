@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.scott.cs246finalproject.EventView">
+    tools:context="com.example.scott.cs246finalproject.DisplaySchedule">
 
     <Button
         android:text="Remove Event"

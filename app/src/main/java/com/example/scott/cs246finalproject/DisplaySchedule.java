@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class EventView extends AppCompatActivity {
+public class DisplaySchedule extends AppCompatActivity {
 
     private ListView listView;
 
@@ -17,7 +17,7 @@ public class EventView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_view);
+        setContentView(R.layout.activity_display_schedule);
         // view elements which shall be modified by the user
         listView = (ListView) findViewById(R.id.list_of_events);
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);

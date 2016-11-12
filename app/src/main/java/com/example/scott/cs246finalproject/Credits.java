@@ -1,5 +1,7 @@
 package com.example.scott.cs246finalproject;
 
+import com.google.api.client.util.DateTime;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,13 +31,22 @@ public class Credits {
         creditList.add(newCredit);
     }
 
-    public boolean useCredit(Date newAppt){
+    public boolean checkCredit(Date newAppt){
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        Date todayDate = cal.getTime();
+        DateTime today = new DateTime(todayDate);
         // search for oldest date in creditList
-        // check that newAppt date is 3 weeks or less after credit date, if it is, return true and
-        // delete from list
+        // check that newAppt date is 3 weeks or less after credit date, if it is, return true
         // if newAppt date is not, search for next oldest date and rerun
         // if no credits work, return false
         return false;
     }
 
+    public void useCredit(Date newAppt){
+        if(checkCredit(newAppt)==true){
+            //delete oldest credit
+        }
+        else{
+        assert(true);}
+    }
 }

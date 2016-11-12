@@ -21,10 +21,20 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     compile 'com.android.support:appcompat-v7:25.0.0'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
+    compile 'com.google.android.gms:play-services-auth:9.8.00'
     compile 'pub.devrel:easypermissions:0.1.5'
-    compile 'com.google.api-client:google-api-client-android:1.22.0' exclude group: 'org.apache.httpcomponents'
-    compile 'com.google.apis:google-api-services-calendar:v3-rev220-1.22.0' exclude group: 'org.apache.httpcomponents'
+    testCompile 'junit:junit:4.12'
+    compile('com.google.api-client:google-api-client-android:1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    compile('com.google.apis:google-api-services-calendar:v3-rev221-1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:2.0.1'
+    }
 }

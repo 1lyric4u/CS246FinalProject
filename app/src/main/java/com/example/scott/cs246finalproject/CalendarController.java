@@ -22,6 +22,7 @@ public class CalendarController {
 
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
+        // May need to set up other things, however, such as the connector and credits
     }
 
     /** Get the single static instance */
@@ -47,10 +48,16 @@ public class CalendarController {
 
         // Tell the calendarConnector to add the event
 
-        // Remove a credit
+        // Remove a credit (Credits may handle whether the event is too close or not)
 
         // Update the app view
     }
+
+    // Method to get current appointments (or lessons?) (they are a part of)
+
+    // Method to get available appointments or time slots
+
+    // Method to get a specific appointment?
 
     // This method may be incorrectly placed - individually activities may decide which view was
     // acted on, and then call the appropriate function(s) in the controller

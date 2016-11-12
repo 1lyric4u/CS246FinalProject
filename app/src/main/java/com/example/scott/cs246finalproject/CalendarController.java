@@ -2,10 +2,9 @@ package com.example.scott.cs246finalproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.api.services.calendar.model.Event;
-
-import java.util.Date;
 
 /**
  * Created by scott on 11/1/16.
@@ -86,5 +85,8 @@ public class CalendarController {
 
     public void update(View v) {
         // Do something
+    }
+    // added to satisfy Test class.. we need to see if this is needed or why this was called there
+    public void performAction(Button mockButtonCancelYes) {
     }
 }

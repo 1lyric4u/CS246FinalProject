@@ -28,6 +28,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:9.8.00'
     compile 'pub.devrel:easypermissions:0.1.5'
     testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:2.0.57-beta"
     compile('com.google.api-client:google-api-client-android:1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }

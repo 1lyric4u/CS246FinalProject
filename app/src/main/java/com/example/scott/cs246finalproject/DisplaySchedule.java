@@ -1,5 +1,6 @@
 package com.example.scott.cs246finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.ListView;
 import java.util.List;
 
 public class DisplaySchedule extends AppCompatActivity {
+
+
+    public static final String APPOINTMENT = "Appointment";
 
     private ListView listView;
 
@@ -22,10 +26,17 @@ public class DisplaySchedule extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_of_events);
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
+
+        // data comes from choooseSchedule
     }
 
     private void selectTime(View view){
         // execute controller method and update UI
+
+        Intent intent = new Intent();
+        intent.putExtra(APPOINTMENT, "");
+
+        // data goes to cancelConfirm
 
     }
 

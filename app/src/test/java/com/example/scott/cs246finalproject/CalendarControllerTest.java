@@ -27,7 +27,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class CalendarControllerTest {
 
-    private final CalendarController controller = new CalendarController();
+    private final CalendarController controller = CalendarController.getInstance();
 
     @Mock
     Context mockContext;

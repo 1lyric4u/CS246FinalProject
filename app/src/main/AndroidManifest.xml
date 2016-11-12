@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CancelConfirm" />
-        <activity android:name=".EventView"></activity>
+        <activity android:name=".DisplaySchedule"></activity>
     </application>
 
 </manifest>

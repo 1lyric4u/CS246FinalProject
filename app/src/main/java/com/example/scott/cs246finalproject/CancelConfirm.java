@@ -20,11 +20,11 @@ import java.util.Date;
 
 public class CancelConfirm extends AppCompatActivity {
 
-    public Event eventToCancel;
-    protected int credits;
-    private java.util.Calendar cal = java.util.Calendar.getInstance();
-    private Date todayDate = cal.getTime();
-    private DateTime today = new DateTime(todayDate);
+    //public Event eventToCancel;
+    //protected int credits;
+    //private java.util.Calendar cal = java.util.Calendar.getInstance();
+   // private Date todayDate = cal.getTime();
+    //private DateTime today = new DateTime(todayDate);
 
 
     /*Button ID:buttonNo needs to simply return user to homepage*/
@@ -45,7 +45,7 @@ public class CancelConfirm extends AppCompatActivity {
         TextView apptToCancel = (TextView) findViewById(R.id.apptToCancel);
         if (extras != null) {
             //eventToCancel = extras.get(eventToSend); //eventToSend needs to come from main
-            apptToCancel.setText(eventToCancel.getStart().toString());
+            //apptToCancel.setText(eventToCancel.getStart().toString());
         }
 
         /*Displays message saying "You will be given a credit on your homepage which will
@@ -55,10 +55,11 @@ public class CancelConfirm extends AppCompatActivity {
     be displayed in Text View ID:creditMsg
      */
         TextView creditMsg = (TextView) findViewById(R.id.creditMsg);
-        if(eventToCancel.getStart().getDate().getValue()-today.getValue()<86400000){
-            creditMsg.setText("Please understand that because this lesson is less than 24 hrs away, you will not be allowed to reschedule.");
-        }
-        else{
+        //if(eventToCancel.getStart().getDate().getValue()-today.getValue()<86400000){
+           // creditMsg.setText("Please understand that because this lesson is less than 24 hrs away, you will not be allowed to reschedule.");
+        //}
+        //else
+        {
             creditMsg.setText("You will be given a credit on your homepage which will allow you to reschedule");
         }
 

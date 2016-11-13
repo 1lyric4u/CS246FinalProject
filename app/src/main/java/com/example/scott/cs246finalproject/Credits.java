@@ -24,6 +24,7 @@ public class Credits {
 
     public void reset(){
         // if any dates are in past, delete from list
+        // David - may be wise to have a constant or something that stores how long credits are good
     }
 
     public void addCredit(Date newCredit){

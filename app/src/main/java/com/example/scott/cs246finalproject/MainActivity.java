@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public void toChooseDay (View view) {
         Intent intent = new Intent(this, ChooseDay.class);
         //pass controller, or at least credits somehow
+        // David - each activity can get the instance of the single controller object by calling
+        // CalendarController.getInstance();
         startActivity(intent);
     }
 

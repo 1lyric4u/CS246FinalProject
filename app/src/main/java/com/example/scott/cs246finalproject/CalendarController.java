@@ -17,7 +17,8 @@ public class CalendarController {
 
     private CalendarConnector calendar;
 
-    private Credits credits;
+    // Also required for app. Should this be public or protected?
+    private Credits credits = new Credits();
 
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
@@ -29,6 +30,11 @@ public class CalendarController {
         return INSTANCE;
     }
 
+    // This may need a name change
+    public int getNumCredits() {
+        return credits.getCount();
+    }
+
     // Should have a parameter, and needs documentation
     public void cancelAppointment() {
         // Somehow create the event to pass to the calendar to delete
@@ -38,6 +44,10 @@ public class CalendarController {
         calendar.deleteEvent(event);
 
         // Add a credit, if applicable
+        // Something like, if (credits.checkCredit(event)) { credits.addCredit(event) }
+        // Might be more functional, with less code repetition, and make more sense, to just say
+        // credits.addCredit(event), and have that method check it itself, because the naming just
+        // doesn't make sense in code flow - if check credit?
 
         // Update the app view
     }

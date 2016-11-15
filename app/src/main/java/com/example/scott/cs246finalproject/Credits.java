@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Credits {
 
-    private final static String TAG = "Credits";
+    private final static String TAG = Credits.class.getSimpleName();
 
     private List<DateTime> creditList;
 

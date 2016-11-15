@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
+
+import java.util.GregorianCalendar;
 
 /**
  * Created by scott on 11/1/16.
@@ -23,6 +26,7 @@ public class CalendarController {
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
         // May need to set up other things, however, such as the connector and credits
+        calendar = new CalendarConnector();
     }
 
     /** Get the single static instance */
@@ -60,6 +64,15 @@ public class CalendarController {
         // Remove a credit (Credits may handle whether the event is too close or not)
 
         // Update the app view
+
+        // Scott - just testing Logging with the methods called below
+        calendar.isValidViewer("John Smith");
+        calendar.deleteEvent(null);
+        calendar.moveEvent(null);
+
+        credits.addCredit(new DateTime(1L));
+        credits.checkCredit(GregorianCalendar.getInstance().getTime());
+        credits.useCredit(GregorianCalendar.getInstance().getTime());
     }
 
     // Method to get current appointments (or lessons?) (they are a part of)

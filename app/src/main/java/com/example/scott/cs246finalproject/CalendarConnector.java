@@ -19,6 +19,7 @@ public class CalendarConnector {
     // Event references are replaced with Object references.
     // This will change.
     public boolean isValidViewer(String id){
+        Log.i(TAG, "Account Validated.");
         return false;
     }
 
@@ -40,6 +41,7 @@ public class CalendarConnector {
     }
 
     public boolean moveEvent(Event e){
+        Log.i(TAG, "Event Moved");
         return false;
     }
 

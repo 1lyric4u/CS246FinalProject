@@ -123,7 +123,7 @@ public class CalendarController {
     public void update(View v) {
         // Do something
         try{
-            new Exception("Demo exception");
+            throw new Exception("Demo exception");
         }catch(Exception e){
             Log.e(TAG, getClass().getEnclosingMethod().getName(), e);
         }

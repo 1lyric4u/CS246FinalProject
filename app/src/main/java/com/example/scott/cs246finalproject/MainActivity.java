@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Scott - just testing logging with the method call below
         controller.createAppointment();
+        controller.update(null);
     }
 
     //this is commented out because it references mylist, which if initialized prevents app from loading

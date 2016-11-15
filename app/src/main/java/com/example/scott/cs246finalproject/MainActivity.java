@@ -1,13 +1,9 @@
 package com.example.scott.cs246finalproject;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
-
-import java.util.List;
 
 
 /**
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // !!This should be replaced, but was used for testing purposes!!
-        Intent intent = new Intent(this, CancelConfirm.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, CancelConfirm.class);
+        //startActivity(intent);
     }
 }

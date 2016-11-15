@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     * CalendarController.credits.getCount()
     * The id for the text view is creditCount*/
 
+    private CalendarController controller = CalendarController.getInstance();
+
 
     /*The button id:Resched needs to move to ChooseDay. calendarcontroller needs to be passed */
     public void toChooseDay (View view) {
@@ -37,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         //pass controller, or at least credits somehow
         // David - each activity can get the instance of the single controller object by calling
         // CalendarController.getInstance();
-        startActivity(intent);
+        //startActivity(intent);
+
+        // Scott - just testing logging with the method call below
+        controller.createAppointment();
     }
 
     //this is commented out because it references mylist, which if initialized prevents app from loading

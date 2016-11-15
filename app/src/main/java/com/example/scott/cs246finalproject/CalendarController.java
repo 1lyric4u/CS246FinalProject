@@ -1,6 +1,7 @@
 package com.example.scott.cs246finalproject;
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,6 +15,12 @@ import java.util.GregorianCalendar;
  */
 
 public class CalendarController {
+
+    // Class name for tagging in logging
+    private static final String TAG = CalendarController.class.getSimpleName();
+
+    // To know if in debugging mode
+    private static final boolean DEBUG = true;
 
     // Only instance possible, required for app so immediately initialized, and thread-safe
     private static final CalendarController INSTANCE = new CalendarController();
@@ -47,6 +54,10 @@ public class CalendarController {
         // Tell the calendarConnector to remove the event
         calendar.deleteEvent(event);
 
+        if (DEBUG) {
+            Log.i(TAG, "Connector's deleteEvent() finished");
+        }
+
         // Add a credit, if applicable
         // Something like, if (credits.checkCredit(event)) { credits.addCredit(event) }
         // Might be more functional, with less code repetition, and make more sense, to just say
@@ -60,6 +71,9 @@ public class CalendarController {
         // May need to check whether a credit is available, if cannot assume this is already checked
 
         // Tell the calendarConnector to add the event
+        if (DEBUG) {
+            Log.i(TAG, "Connector's addEvent() finished");
+        }
 
         // Remove a credit (Credits may handle whether the event is too close or not)
 

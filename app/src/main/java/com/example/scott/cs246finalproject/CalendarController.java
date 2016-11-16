@@ -81,8 +81,8 @@ public class CalendarController {
 
         // Scott - just testing Logging with the methods called below
         calendar.isValidViewer("John Smith");
-        calendar.deleteEvent(null);
-        calendar.moveEvent(null);
+        calendar.deleteEvent(new Event());
+        calendar.moveEvent(new Event());
 
         credits.addCredit(new DateTime(1L));
         credits.checkCredit(GregorianCalendar.getInstance().getTime());
@@ -125,7 +125,7 @@ public class CalendarController {
         try{
             throw new Exception("Demo exception");
         }catch(Exception e){
-            Log.e(TAG, getClass().getEnclosingMethod().getName(), e);
+            Log.e(TAG, "Update view died");
         }
     }
     // added to satisfy Test class.. we need to see if this is needed or why this was called there

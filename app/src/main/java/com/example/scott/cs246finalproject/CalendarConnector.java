@@ -32,7 +32,7 @@ public class CalendarConnector {
         try{
             throw new Exception("Unable to delete event");
         }catch(Exception ex) {
-            Log.e(TAG, getClass().getEnclosingMethod().getName(), ex);
+            Log.e(TAG, "delete Event died");
         }// end catch
     }
 

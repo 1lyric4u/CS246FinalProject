@@ -54,6 +54,7 @@ public class Credits {
             //delete oldest credit
         }
         else{
-            Log.e(TAG, "There is no credit available to use for this reschedule date");}
+            Log.e(TAG, "There is no credit available to use for this reschedule date");
+        }
     }
 }

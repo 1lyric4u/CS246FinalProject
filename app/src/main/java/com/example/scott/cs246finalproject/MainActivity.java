@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /*The button id:Resched needs to move to ChooseDay. calendarcontroller needs to be passed */
-    public void toChooseDay (View view) {
+    public void toChooseDay(View view) {
         Intent intent = new Intent(this, ChooseDay.class);
         //pass controller, or at least credits somehow
         // David - each activity can get the instance of the single controller object by calling
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Scott - just testing logging with the method call below
         controller.createAppointment();
-        controller.update(null);
+        controller.update(view);
     }
 
     //this is commented out because it references mylist, which if initialized prevents app from loading

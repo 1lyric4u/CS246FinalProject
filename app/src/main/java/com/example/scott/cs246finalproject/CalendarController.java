@@ -59,10 +59,7 @@ public class CalendarController {
         }
 
         // Add a credit, if applicable
-        // Something like, if (credits.checkCredit(event)) { credits.addCredit(event) }
-        // Might be more functional, with less code repetition, and make more sense, to just say
-        // credits.addCredit(event), and have that method check it itself, because the naming just
-        // doesn't make sense in code flow - if check credit?
+
 
         // Update the app view
     }
@@ -76,6 +73,10 @@ public class CalendarController {
         }
 
         // Remove a credit (Credits may handle whether the event is too close or not)
+        //Shanna - The credits class has a function checkCredit(DateTime newAppt) which returns
+        // an ArrayList of eligible credits. It may be good to let the user decide which credit he wants
+        // to use. Then credits can remove the credit using useCredit(DateTime canceledAppt) which removes
+        // the credit from the canceled appointment time it is passed.
 
         // Update the app view
 
@@ -84,9 +85,10 @@ public class CalendarController {
         calendar.deleteEvent(new Event());
         calendar.moveEvent(new Event());
 
-        credits.addCredit(new DateTime(1L));
-        credits.checkCredit(GregorianCalendar.getInstance().getTime());
-        credits.useCredit(GregorianCalendar.getInstance().getTime());
+        credits.addCredit(new DateTime(1L));//Shanna - the addCredit function needs a start and end time for
+        // the canceled appt to caclulate the length of the lesson
+        credits.checkCredit(GregorianCalendar.getInstance().getTime()); // Shanna - expecets a DateTime
+        credits.useCredit(GregorianCalendar.getInstance().getTime()); //Shanna - expects a DateTime
     }
 
     // Method to get current appointments (or lessons?) (they are a part of)

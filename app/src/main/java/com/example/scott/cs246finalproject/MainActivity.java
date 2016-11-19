@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ListView;
+
+import com.google.api.services.calendar.model.Event;
+
+import java.util.List;
 
 
 /**
@@ -19,19 +24,20 @@ public class MainActivity extends AppCompatActivity {
     * when clicked, needs to send the event as "eventToSend" to CancelConfirm as an extra.
     * CancelConfirm is already prepared to handle it*/
 
-    //For some reason, the following line of code causes a crash, maybe because it is empty
-    //ListView mylist = (ListView) findViewById(R.id.upcoming);
-    //populate list
-
     // Gain access to the controller
-    //private CalendarController controller = CalendarController.getInstance();
+    private CalendarController controller = CalendarController.getInstance();
+
+
+    //For some reason, the following line of code causes a crash, maybe because it is empty
+    ListView mylist = (ListView) findViewById(R.id.upcoming);
+
+    //populate list
+    List<Event> upcoming = controller.calendar.getCalendarEvents();
+
 
     /* Needs to display number of credits available. This should be saved in
     * CalendarController.credits.getCount()
     * The id for the text view is creditCount*/
-
-    private CalendarController controller = CalendarController.getInstance();
-
 
     /*The button id:Resched needs to move to ChooseDay. calendarcontroller needs to be passed */
     public void toChooseDay(View view) {

@@ -25,10 +25,12 @@ public class CalendarController {
     // Only instance possible, required for app so immediately initialized, and thread-safe
     private static final CalendarController INSTANCE = new CalendarController();
 
-    private CalendarConnector calendar;
+    //Shanna-this was private, but I changed to public because mainActivity needs to access
+    public CalendarConnector calendar;
 
     // Also required for app. Should this be public or protected?
-    private Credits credits = new Credits();
+    //Shanna-I changed this to public, as credits has methods that need to be called by views
+    public Credits credits = new Credits();
 
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
@@ -64,8 +66,13 @@ public class CalendarController {
         // Update the app view
     }
 
-    public void createAppointment() {
+    public void createAppointment(String newAppt) {
+        //parse String into DateTime
+
         // May need to check whether a credit is available, if cannot assume this is already checked
+        //Shanna - the cancel confirm view creates the Appointment using this function, and uses the
+        // credit. The credits have already been checked at this point. No need to mess with credits
+        // at all here, just create the Appointment.
 
         // Tell the calendarConnector to add the event
         if (DEBUG) {
@@ -73,10 +80,7 @@ public class CalendarController {
         }
 
         // Remove a credit (Credits may handle whether the event is too close or not)
-        //Shanna - The credits class has a function checkCredit(DateTime newAppt) which returns
-        // an ArrayList of eligible credits. It may be good to let the user decide which credit he wants
-        // to use. Then credits can remove the credit using useCredit(DateTime canceledAppt) which removes
-        // the credit from the canceled appointment time it is passed.
+        //Shanna - This is handled by credits, and called directly from the view (as explained above)
 
         // Update the app view
 

@@ -16,7 +16,11 @@ public class Credits {
 
     private final static String TAG = Credits.class.getSimpleName();
 
-    private List<DateTime> creditList;
+    private final static long THREEWEEKS = 1814400000;
+
+    private final static long ONEDAY = 86400000;
+
+    private List<Credit> creditList;
 
     public Credits(){
         creditList = new ArrayList<>();
@@ -27,34 +31,62 @@ public class Credits {
     }
 
     public void reset(){
+        //get access to today
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        Date todayDate = cal.getTime();
+        DateTime today = new DateTime(todayDate);
+
         // if any dates are in past, delete from list
-        // David - may be wise to have a constant or something that stores how long credits are good
+        for (int i = 0; i <= creditList.size(); i++){
+            if(creditList.get(i).dateTime.getValue()- today.getValue()<= 0){
+                creditList.remove(i);
+            }
+        }
     }
 
-    public void addCredit(DateTime newCredit){
-        //add date to list
+    public void addCredit(DateTime startTime, DateTime endTime ){
+        //create the credit
+        Credit newCredit = new Credit();
+        newCredit.duration = endTime.getValue()-startTime.getValue();
+        newCredit.dateTime = startTime;
+        //add credit to list
         creditList.add(newCredit);
         Log.i(TAG, "Credit has been added");
     }
 
-    public boolean checkCredit(Date newAppt){
+    public List<Credit> checkCredit(DateTime newAppt) {
+        //get access to today
         java.util.Calendar cal = java.util.Calendar.getInstance();
         Date todayDate = cal.getTime();
         DateTime today = new DateTime(todayDate);
-        // search for oldest date in creditList
-        // check that newAppt date is 3 weeks or less after credit date, if it is, return true
-        // if newAppt date is not, search for next oldest date and rerun
-        // if no credits work, return false
-        Log.i(TAG, "You have a credit available to use for this reschedule date");
-        return true;
+
+        //set up list to return
+        List<Credit> returnList = new ArrayList<Credit>();
+
+        //check for appropriate credit
+        for (int i = 0; i <= creditList.size(); i++){
+            // check that newAppt date is 3 weeks (1814400000 ms) or less  before or after credit date,
+            if (newAppt.getValue() - creditList.get(i).dateTime.getValue() <= THREEWEEKS ||
+                    creditList.get(i).dateTime.getValue() - newAppt.getValue() <= THREEWEEKS) {
+                //check that newAppt is not in 24 hrs (86400000 ms) from today
+                if(newAppt.getValue()- today.getValue()<= ONEDAY){
+                    Log.i(TAG,"There is an appropriate credit");
+                    returnList.add(creditList.get(i));
+                }
+            }
+        }
+        return returnList;
     }
 
-    public void useCredit(Date newAppt){
-        if(checkCredit(newAppt)==true){
-            //delete oldest credit
+
+    public void useCredit(DateTime oldApptStart){
+        Credit old = new Credit();
+        old.dateTime = oldApptStart;
+        if(creditList.contains(old)){
+            creditList.remove(old);
         }
         else{
-            Log.e(TAG, "There is no credit available to use for this reschedule date");
+            Log.e(TAG, "There is no canceled appointment with that start time");
         }
     }
 }

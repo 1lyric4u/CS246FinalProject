@@ -49,7 +49,7 @@ public class CalendarController {
     }
 
     // Should have a parameter, and needs documentation
-    public void cancelAppointment() {
+    public void cancelAppointment(String toCancel) {
         // Somehow create the event to pass to the calendar to delete
         Event event = new Event(); // Needs change!
 
@@ -84,7 +84,7 @@ public class CalendarController {
 
         // Update the app view
 
-        // Scott - just testing Logging with the methods called below
+        /* Scott - just testing Logging with the methods called below
         calendar.isValidViewer("John Smith");
         calendar.deleteEvent(new Event());
         calendar.moveEvent(new Event());
@@ -93,6 +93,7 @@ public class CalendarController {
         // the canceled appt to caclulate the length of the lesson
         credits.checkCredit(GregorianCalendar.getInstance().getTime()); // Shanna - expecets a DateTime
         credits.useCredit(GregorianCalendar.getInstance().getTime()); //Shanna - expects a DateTime
+        */
     }
 
     // Method to get current appointments (or lessons?) (they are a part of)

@@ -20,16 +20,18 @@ import java.util.Date;
 
 public class CancelConfirm extends AppCompatActivity {
 
-    //public Event eventToCancel;
-    //protected int credits;
-    //private java.util.Calendar cal = java.util.Calendar.getInstance();
-    //private Date todayDate = cal.getTime();
-    //private DateTime today = new DateTime(todayDate);
+    private String eventToCancel;
+    private java.util.Calendar cal = java.util.Calendar.getInstance();
+    private Date todayDate = cal.getTime();
+    private DateTime today = new DateTime(todayDate);
+    private static final long ONEDAY = 86400000;
+    private DateTime toCancel;
 
 
     // David - May be cleaner to, rather than have each button 'call' a different method, have
     //      them 'call' the same method, which then checks which button was pressed and acts
     //      accordingly.
+    // Shanna- That's more confusing to me, but if you want to change that, feel free
 
 
     /*Button ID:buttonNo needs to simply return user to homepage*/
@@ -49,22 +51,18 @@ public class CancelConfirm extends AppCompatActivity {
         /* Needs to get date to cancel from home page and display it in TextView ID:apptToCancel*/
         TextView apptToCancel = (TextView) findViewById(R.id.apptToCancel);
         if (extras != null) {
-            //eventToCancel = extras.get(eventToSend); //eventToSend needs to come from main
-            //apptToCancel.setText(eventToCancel.getStart().toString());
+            eventToCancel = MainActivity.EVENTTOCANCEL; //eventToSend needs to come from main
+            apptToCancel.setText(eventToCancel);
         }
 
-        /*Displays message saying "You will be given a credit on your homepage which will
-        allow you to reschedule" if the lesson time is more than 24 hrs away. If the cancel happens
-        withing 24 hrs of the appointment time, it should display "Please understand that because this
-        lesson is less than 24 hrs away, you will not be allowed to reschedule." This message should
-        be displayed in Text View ID:creditMsg
-         */
+        //Displays message saying displayed in Text View ID:creditMsg
         TextView creditMsg = (TextView) findViewById(R.id.creditMsg);
-        //if(eventToCancel.getStart().getDate().getValue()-today.getValue()<86400000){
-        // creditMsg.setText("Please understand that because this lesson is less than 24 hrs away,
-        // you will not be allowed to reschedule.");
-        //}
-        //else
+        toCancel = new DateTime(eventToCancel); // not sure how this parses
+        if(toCancel.getValue()-today.getValue()< ONEDAY){
+             creditMsg.setText("Please understand that because this lesson is less than 24 hrs away, " +
+                     "you will not be allowed to reschedule.");
+        }
+        else
         {
             creditMsg.setText("You will be given a credit on your homepage which will allow you to reschedule");
         }
@@ -73,14 +71,7 @@ public class CancelConfirm extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.buttonYes);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // David - this should rather be done more fully through the controller, such as
-                //      controller.cancelAppointment(eventToCancel); or something of that nature
-                //      Note that the controller would handle the increment credits part
-                //cancel appointment via CalendarController
-                    //eventToCancel.cancelAppointment;
-                //increment credits
-                    //addCredit(eventTocancel.getStart().getDate());
-                //return to homepage
+                controller.cancelAppointment(eventToCancel);
                 finish();
             }
         });

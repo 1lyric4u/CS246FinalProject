@@ -2,11 +2,17 @@ package com.example.scott.cs246finalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.api.services.calendar.model.Event;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -19,52 +25,54 @@ import java.util.List;
  */
 
 public class MainActivity extends AppCompatActivity {
-    /* Needs to display appointments in list view. You may consider creating a list that stores the
-    * event.getStart() which returns a datetime data type. The list view needs to be clickable and
-    * when clicked, needs to send the event as "eventToSend" to CancelConfirm as an extra.
-    * CancelConfirm is already prepared to handle it*/
 
-    // Gain access to the controller
+    private String listItemSelected;
+    private ArrayAdapter<String> arrayAdapter;
+    private ListView listView;
     private CalendarController controller = CalendarController.getInstance();
+    private TextView creditCount;
 
-
-    //For some reason, the following line of code causes a crash, maybe because it is empty
-    ListView mylist = (ListView) findViewById(R.id.upcoming);
-
-    //populate list
-    List<Event> upcoming = controller.calendar.getCalendarEvents();
-
-
-    /* Needs to display number of credits available. This should be saved in
-    * CalendarController.credits.getCount()
-    * The id for the text view is creditCount*/
-
-    /*The button id:Resched needs to move to ChooseDay. calendarcontroller needs to be passed */
+    /*The button id:Resched needs to move to ChooseDay.*/
     public void toChooseDay(View view) {
         Intent intent = new Intent(this, ChooseDay.class);
-        //pass controller, or at least credits somehow
-        // David - each activity can get the instance of the single controller object by calling
-        // CalendarController.getInstance();
-        //startActivity(intent);
-
+        startActivity(intent);
         // Scott - just testing logging with the method call below
-        controller.createAppointment();
-        controller.update(view);
-        controller.cancelAppointment();
+        //controller.createAppointment();
+        //controller.update(view);
+        //controller.cancelAppointment();
     }
 
     //this is commented out because it references mylist, which if initialized prevents app from loading
-    /*public void toCancelConfirm (View view) {
+    public void toCancelConfirm (View view) {
         Intent intent = new Intent(this, CancelConfirm.class);
-        String eventToSend = mylist.getSelectedItem().toString();
+        String eventToSend = listView.getSelectedItem().toString();
         intent.putExtra("cancel me", eventToSend);
         //intent.putExtra("controller", controller) // not sure how to pass controller, sorry
         startActivity(intent);
-    }*/
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //populate list
+        List<Event> upcoming = controller.calendar.getCalendarEvents();
+        listView = (ListView) findViewById(R.id.upcoming);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                listItemSelected = (String)listView.getItemAtPosition(i);
+            }// end override
+        });
+        arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
+        listView.setAdapter(arrayAdapter);  // apply adapter to listView
+
+        arrayAdapter.addAll(upcoming.toString());
+
+        //display number of credits available.
+        creditCount = (TextView) findViewById(R.id.creditCount);
+        creditCount.setText(controller.credits.getCount());
+
 
         // !!This should be replaced, but was used for testing purposes!!
         //Intent intent = new Intent(this, CancelConfirm.class);

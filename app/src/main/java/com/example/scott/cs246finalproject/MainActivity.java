@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CancelConfirm.class);
         String eventToSend = listView.getSelectedItem().toString();
         intent.putExtra("cancel me", eventToSend);
+        // David - Don't need to pass controller, as it's a Singleton and each activity can access
         //intent.putExtra("controller", controller) // not sure how to pass controller, sorry
         startActivity(intent);
     }
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         //populate list
         List<Event> upcoming = controller.calendar.getCalendarEvents();
         listView = (ListView) findViewById(R.id.upcoming);
@@ -72,10 +74,13 @@ public class MainActivity extends AppCompatActivity {
         //display number of credits available.
         creditCount = (TextView) findViewById(R.id.creditCount);
         creditCount.setText(controller.credits.getCount());
+        */
 
 
         // !!This should be replaced, but was used for testing purposes!!
-        //Intent intent = new Intent(this, CancelConfirm.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, CancelConfirm.class);
+        // The string used here is taken from https://tools.ietf.org/html/rfc3339#section-5.8
+        intent.putExtra("cancel me", "1985-04-12T23:20:50.52Z");
+        startActivity(intent);
     }
 }

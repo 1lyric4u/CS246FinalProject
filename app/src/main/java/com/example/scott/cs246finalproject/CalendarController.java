@@ -30,6 +30,7 @@ public class CalendarController {
 
     // Also required for app. Should this be public or protected?
     //Shanna-I changed this to public, as credits has methods that need to be called by views
+    // David - Should it be final, so it can't be reinitialized?
     public Credits credits = new Credits();
 
     private CalendarController() {
@@ -50,24 +51,29 @@ public class CalendarController {
 
     // Should have a parameter, and needs documentation
     public void cancelAppointment(String toCancel) {
-        // Somehow create the event to pass to the calendar to delete
-        Event event = new Event(); // Needs change!
+        // Does parsing need to happen first?
+        DateTime appt = new DateTime(toCancel); // May need change
 
         // Tell the calendarConnector to remove the event
-        calendar.deleteEvent(event);
+        //calendar.deleteEvent(appt);
 
         if (DEBUG) {
             Log.i(TAG, "Connector's deleteEvent() finished");
         }
 
-        // Add a credit, if applicable
+        // Add a credit (if allowed - still not sure if this should be done in Credits or something)
+        if (!Credit.isTodayWithinOneDay(appt)) {
+            credits.addCredit(appt, appt); // Clearly, this needs to change
+        }
 
-
-        // Update the app view
+        // Update the app view - is this necessary, or do the views do this automatically?
     }
 
     public void createAppointment(String newAppt) {
+        // Actually may be better to pass the Credit being used or something
+
         //parse String into DateTime
+        DateTime appt = new DateTime(newAppt); // This likely needs to change
 
         // May need to check whether a credit is available, if cannot assume this is already checked
         //Shanna - the cancel confirm view creates the Appointment using this function, and uses the
@@ -75,6 +81,8 @@ public class CalendarController {
         // at all here, just create the Appointment.
 
         // Tell the calendarConnector to add the event
+        //calendar.createEvent(appt);
+
         if (DEBUG) {
             Log.i(TAG, "Connector's addEvent() finished");
         }
@@ -82,7 +90,7 @@ public class CalendarController {
         // Remove a credit (Credits may handle whether the event is too close or not)
         //Shanna - This is handled by credits, and called directly from the view (as explained above)
 
-        // Update the app view
+        // Update the app view - this may not even be necessary
 
         /* Scott - just testing Logging with the methods called below
         calendar.isValidViewer("John Smith");

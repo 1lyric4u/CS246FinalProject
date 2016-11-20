@@ -16,10 +16,6 @@ public class Credits {
 
     private final static String TAG = Credits.class.getSimpleName();
 
-    private final static long THREEWEEKS = 1814400000;
-
-    private final static long ONEDAY = 86400000;
-
     private List<Credit> creditList;
 
     public Credits(){
@@ -31,14 +27,10 @@ public class Credits {
     }
 
     public void reset(){
-        //get access to today
-        java.util.Calendar cal = java.util.Calendar.getInstance();
-        Date todayDate = cal.getTime();
-        DateTime today = new DateTime(todayDate);
 
         // if any dates are in past, delete from list
         for (int i = 0; i <= creditList.size(); i++){
-            if(creditList.get(i).dateTime.getValue()- today.getValue()<= 0){
+            if(Credit.isAfterToday(creditList.get(i))){
                 creditList.remove(i);
             }
         }
@@ -65,11 +57,10 @@ public class Credits {
 
         //check for appropriate credit
         for (int i = 0; i <= creditList.size(); i++){
-            // check that newAppt date is 3 weeks (1814400000 ms) or less  before or after credit date,
-            if (newAppt.getValue() - creditList.get(i).dateTime.getValue() <= THREEWEEKS ||
-                    creditList.get(i).dateTime.getValue() - newAppt.getValue() <= THREEWEEKS) {
+            // check that newAppt date is within 3 weeks (1814400000 ms) of credit date,
+            if (Credit.isTodayWithinThreeWeeks(newAppt)) {
                 //check that newAppt is not in 24 hrs (86400000 ms) from today
-                if(newAppt.getValue()- today.getValue()<= ONEDAY){
+                if(!Credit.isTodayWithinOneDay(newAppt)){
                     Log.i(TAG,"There is an appropriate credit");
                     returnList.add(creditList.get(i));
                 }
@@ -90,3 +81,4 @@ public class Credits {
         }
     }
 }
+

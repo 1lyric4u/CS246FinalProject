@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">CS246FinalProject</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+
+    <string name="activity_cancel_confirm_prompt">
+        Are you sure you want to cancel your appointment for
+    </string>
+    <string name="activity_cancel_confirm_creditMsg_reschedule_allowed">
+        You will be given a credit on your homepage which will allow you to reschedule
+    </string>
+    <string name="activity_cancel_confirm_creditMsg_reschedule_not_allowed">
+        Please understand that because this lesson is less than 24 hrs away, you will not be
+        allowed to reschedule.
+    </string>
 </resources>

@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.api.client.util.DateTime;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,11 +29,13 @@ public class DisplaySchedule extends AppCompatActivity {
 
     private String listItemSelected;
 
-    private CalendarControllerInterface controller;
+    private CalendarController controller = CalendarController.getInstance();
 
     private ListView listView;
 
     private ArrayAdapter<String> arrayAdapter;
+
+    private DateTime chosen_day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +49,21 @@ public class DisplaySchedule extends AppCompatActivity {
                 listItemSelected = (String)listView.getItemAtPosition(i);
             }// end override
         });
+        //Setting listView and adapter now done by Connector
+        controller.calendar.listView = this.listView;
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
+        controller.calendar.adapter = this.arrayAdapter;
+        /*
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
+        */
 
-        // grab controller
-
+        /// !!! !!! !!!
+        //Need to parse ChooseDay.CHOSEN_DAY from String into DateTime chosen_day
+        controller.calendar.isOneDay = true;
+        controller.calendar.dateToDisplay = chosen_day;
 
         // populate time availability from controller
-        arrayAdapter.addAll(fakeTimes());
+       // arrayAdapter.addAll(fakeTimes());
 
         // default 'selected time' = false time
         listItemSelected = EMPTY_VALUE;
@@ -69,7 +80,7 @@ public class DisplaySchedule extends AppCompatActivity {
             startActivity(intent);
     }
 
-    // to be removed and replaced with a call to the controller for available times
+    /* to be removed and replaced with a call to the controller for available times
     private List<String> fakeTimes(){
         List<String> list = new ArrayList<>();
         Calendar today = GregorianCalendar.getInstance();
@@ -85,6 +96,6 @@ public class DisplaySchedule extends AppCompatActivity {
         }// end loop
 
         return list;
-    }
-
+    } */
+    public void click(View view){controller.calendar.getResults(view);}
 }

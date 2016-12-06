@@ -11,14 +11,6 @@
     tools:context="com.example.scott.cs246finalproject.MainActivity">
 
     <TextView
-        android:text="Your upcoming appointments are "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView5" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
@@ -64,15 +56,6 @@
         android:layout_above="@+id/textView8"
         android:layout_toEndOf="@+id/textView6" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView5"
-        android:layout_toStartOf="@+id/textView8"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/upcoming"
-        android:layout_above="@+id/button" />
-
     <Button
         android:text="Reschedule Now"
         android:onClick="toChooseDay"
@@ -81,5 +64,23 @@
         android:id="@+id/Resched"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Load Upcoming Appointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/getData"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:onClick="click" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/getData"
+        android:layout_alignParentStart="true"
+        android:id="@+id/upcoming"
+        android:layout_above="@+id/button" />
 
 </RelativeLayout>

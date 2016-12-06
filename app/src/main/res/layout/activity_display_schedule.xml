@@ -19,21 +19,21 @@
         android:id="@+id/btn_remove_event"
         android:onClick="selectTime" />
 
-    <TextView
-        android:text="Available Slots"
+    <Button
+        android:text="Load Calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView2"
-        android:textSize="36sp" />
+        android:id="@+id/button"
+        android:onClick="getResults"
+        android:textSize="16sp" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
         android:layout_above="@+id/btn_remove_event"
-        android:id="@+id/list_of_events" />
+        android:id="@+id/list_of_events"
+        android:layout_below="@+id/button" />
 </RelativeLayout>

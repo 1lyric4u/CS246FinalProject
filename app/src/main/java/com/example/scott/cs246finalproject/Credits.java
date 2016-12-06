@@ -16,9 +16,9 @@ public class Credits {
 
     private final static String TAG = Credits.class.getSimpleName();
 
-    private final static long THREEWEEKS = 1814400000;
+    private final static long THREEWEEKS = 1814400000; // 3 weeks in milliseconds
 
-    private final static long ONEDAY = 86400000;
+    private final static long ONEDAY = 86400000; // 1 day in milliseconds
 
     private List<Credit> creditList;
 

@@ -30,7 +30,7 @@ public class CalendarController {
 
     // Also required for app. Should this be public or protected?
     //Shanna-I changed this to public, as credits has methods that need to be called by views
-    public Credits credits = new Credits();
+    public Credits credits;
 
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
@@ -54,7 +54,8 @@ public class CalendarController {
         Event event = new Event(); // Needs change!
 
         // Tell the calendarConnector to remove the event
-        calendar.deleteEvent(event);
+        //No longer needed with redesign -Shanna
+        //calendar.deleteEvent(event);
 
         if (DEBUG) {
             Log.i(TAG, "Connector's deleteEvent() finished");

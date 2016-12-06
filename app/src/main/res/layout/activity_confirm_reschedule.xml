@@ -11,7 +11,7 @@
     tools:context="com.example.scott.cs246finalproject.ConfirmReschedule">
 
     <TextView
-        android:text="Are you sure you want to reschedule your appointment for"
+        android:text="To schedule an appointment for"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -25,21 +25,28 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/reschedTimeDate" />
 
-    <Button
-        android:text="Yes"
+    <TextView
+        android:text="Which canceled appointment's credit would you like to use?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/reschedTimeDate"
-        android:layout_marginEnd="42dp"
-        android:id="@+id/buttonYes" />
+        android:layout_below="@+id/reschedTimeDate"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView4"
+        android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="No"
+        android:text="Select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/buttonYes"
+        android:onClick="Yes"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/reschedTimeDate"
-        android:layout_marginStart="42dp"
-        android:id="@+id/buttonNo" />
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/creditList" />
 </RelativeLayout>

@@ -25,7 +25,7 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp"
-        android:id="@+id/calendarView" />
+        android:id="@+id/calendar" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -27,10 +27,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private String listItemSelected;
-    private ArrayAdapter<String> arrayAdapter;
-    private ListView listView;
     private CalendarController controller = CalendarController.getInstance();
     private TextView creditCount;
+    public static String EVENTTOCANCEL;
 
     /*The button id:Resched needs to move to ChooseDay.*/
     public void toChooseDay(View view) {
@@ -42,20 +41,30 @@ public class MainActivity extends AppCompatActivity {
         //controller.cancelAppointment();
     }
 
-    //this is commented out because it references mylist, which if initialized prevents app from loading
     public void toCancelConfirm (View view) {
         Intent intent = new Intent(this, CancelConfirm.class);
-        String eventToSend = listView.getSelectedItem().toString();
-        intent.putExtra("cancel me", eventToSend);
-        //intent.putExtra("controller", controller) // not sure how to pass controller, sorry
+        //because the listView is populated by CalendarConnector, we access that list.
+        //I'm honestly not sure if this will work -Shanna
+        EVENTTOCANCEL = controller.calendar.listView.getSelectedItem().toString();
         startActivity(intent);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //populate list
+        //This is now done by CalendarConnector
+        controller.calendar.listView = (ListView) findViewById(R.id.upcoming);
+        controller.calendar.adapter = new ArrayAdapter<>(
+                getApplicationContext(), R.layout.support_simple_spinner_dropdown_item);
+
+        //  !!! !!! !!!
+        // This will load all of the teacher's calendar, not just where student is an attendee
+        // Filtering code needs to go here !!!! <3 Shanna
+
+        /*
         List<Event> upcoming = controller.calendar.getCalendarEvents();
         listView = (ListView) findViewById(R.id.upcoming);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -68,14 +77,16 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
 
         arrayAdapter.addAll(upcoming.toString());
+        */
 
         //display number of credits available.
-        creditCount = (TextView) findViewById(R.id.creditCount);
-        creditCount.setText(controller.credits.getCount());
+        //creditCount = (TextView) findViewById(R.id.creditCount);
+        //creditCount.setText(controller.credits.getCount());
 
 
         // !!This should be replaced, but was used for testing purposes!!
         //Intent intent = new Intent(this, CancelConfirm.class);
         //startActivity(intent);
     }
+    public void click(View view){controller.calendar.getResults(view);}
 }

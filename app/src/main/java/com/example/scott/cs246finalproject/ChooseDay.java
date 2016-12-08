@@ -3,6 +3,7 @@ package com.example.scott.cs246finalproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
+//import org.joda.time.DateTime;
 
 public class ChooseDay extends AppCompatActivity {
     /* this view needs to be accessed by the "reschedule" button on the home page*/

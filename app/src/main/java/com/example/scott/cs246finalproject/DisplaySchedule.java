@@ -59,8 +59,11 @@ public class DisplaySchedule extends AppCompatActivity {
 
         /// !!! !!! !!!
         //Need to parse ChooseDay.CHOSEN_DAY from String into DateTime chosen_day
+        //31556952000 milsec/year, but no set milsec/month, so may need to use Gregorian Calendar class
+        // Don't forget that the DateTime needs to be 12:00 am in Mountain Time.
+        // How will we deal with daylight savings? Does Gregorian Calendar handle that? -Shanna-Mae
         controller.calendar.isOneDay = true;
-        controller.calendar.dateToDisplay = chosen_day;
+        controller.calendar.dateToDisplay = new DateTime(ChooseDay.CHOSEN_DAY.toDate().getTime());
 
         // populate time availability from controller
        // arrayAdapter.addAll(fakeTimes());

@@ -35,12 +35,14 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.CalendarList;
 import com.google.api.services.calendar.model.CalendarListEntry;
 import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.services.calendar.model.Events;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -64,6 +66,8 @@ public class CalendarConnector extends Activity
 
 
     private static final String TAG = CalendarConnector.class.getSimpleName();
+
+    private CalendarController controller = CalendarController.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -337,19 +341,59 @@ public class CalendarConnector extends Activity
             // List the next 10 events from the primary calendar.
             DateTime now = new DateTime(System.currentTimeMillis());
             List<String> eventStrings = new ArrayList<String>();
-            Events events = mService.events().list("medahardy@gmail.com")
-                    .setMaxResults(10)
-                    .setTimeMin(now)
-                    .setOrderBy("startTime")
-                    .setSingleEvents(true)
-                    .execute();
-            if(isOneDay){
-                events = mService.events().list("medahardy@gmail.com")
-                        .setMaxResults(50)
-                        .setTimeMin(dateToDisplay)
+            List<Event> items = new ArrayList<>();
+            if(!isOneDay){
+                Events events = mService.events().list("medahardy@gmail.com")
+                        .setMaxResults(10)
+                        .setTimeMin(now)
+                        .setOrderBy("startTime")
+                        .setSingleEvents(true)
                         .execute();
+                items= events.getItems();}
+            else{
+                //get events from teacher's calendar for that day
+                List<Event> teacherEvents;
+                DateTime endOfDay = new DateTime(dateToDisplay.getValue()+86400000);
+                Events events = mService.events().list("medahardy@gmail.com")
+                        .setTimeMin(dateToDisplay)
+                        .setTimeMax(endOfDay)
+                        .execute();
+                teacherEvents = events.getItems();
+                //create list of all possible time slots for the day starting at 9 am, ending at 8 pm
+                List<Event> possibleEvents = new ArrayList<>();
+                DateTime startIndex = new DateTime(dateToDisplay.getValue()+25200000); //start at 7 am
+                DateTime endIndex = new DateTime(dateToDisplay.getValue()+ 72000000); //end at 8 pm
+                while(startIndex.getValue() < endIndex.getValue()){
+                    //create an event with a start time
+                    Event add = new Event();
+                    EventDateTime addStart = new EventDateTime();
+                    addStart.setDateTime(startIndex);
+                    add.setOriginalStartTime(addStart);
+                    //find out how long the student's lesson is
+                    long duration = controller.credits.checkCredit(dateToDisplay).get(0).duration;
+                    //add end time to event
+                    DateTime end = new DateTime(startIndex.getValue()+duration);
+                    EventDateTime addEnd = new EventDateTime();
+                    addEnd.setDateTime(end);
+                    add.setEnd(addEnd);
+                    //add event to list
+                    possibleEvents.add(add);
+                }
+                //remove events that are unavailable
+                Event possible;
+                Event teacher;
+                for(int i = 0; i < possibleEvents.size(); i++){
+                    possible = possibleEvents.get(i);
+                    for(int j = 0; j < teacherEvents.size(); j++){
+                        if(teacherEvents.get(j).getEnd().getDateTime().getValue() <
+                                possible.getStart().getDateTime().getValue()
+                                && possible.getEnd().getDateTime().getValue()
+                                < teacherEvents.get(j+1).getStart().getDateTime().getValue()){
+                            items.add(possible);
+                        }
+                    }
+                }
             }
-            List<Event> items = events.getItems();
 
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();

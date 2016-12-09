@@ -81,7 +81,7 @@ public class CalendarConnector extends Activity
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    public void getResults(View view){
+    public void getResults(){
         getResultsFromApi();
     }
 

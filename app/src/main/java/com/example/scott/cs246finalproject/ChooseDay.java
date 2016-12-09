@@ -27,7 +27,7 @@ public class ChooseDay extends AppCompatActivity {
         initializeCalendar();
     }
     public void initializeCalendar() {
-        calendar = (CalendarView) findViewById(R.id.calendarView);
+        calendar = (CalendarView) findViewById(R.id.calendar);
         //sets the listener to be notified upon selected date change.
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
@@ -41,4 +41,6 @@ public class ChooseDay extends AppCompatActivity {
             }
         });
     }
+
+
 }

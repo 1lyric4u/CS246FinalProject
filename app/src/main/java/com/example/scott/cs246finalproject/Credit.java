@@ -10,4 +10,8 @@ import com.google.api.client.util.DateTime;
 public class Credit {
     public DateTime dateTime;
     public long duration;
+
+    public static boolean isTodayWithinOneDay(DateTime date){
+        return false;
+    }
 }

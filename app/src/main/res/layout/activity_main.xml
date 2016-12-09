@@ -11,31 +11,24 @@
     tools:context="com.example.scott.cs246finalproject.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView10" />
-
-    <TextView
         android:text="rescheduling credits. "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"
         android:layout_marginEnd="21dp"
-        android:layout_alignBaseline="@+id/creditCount"
-        android:layout_alignBottom="@+id/creditCount"
+        android:layout_alignBaseline="@+id/txt_credit_count"
+        android:layout_alignBottom="@+id/txt_credit_count"
         android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/creditCount"
+        android:id="@+id/txt_credit_count"
         android:layout_marginRight="60dp"
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
-        android:layout_alignStart="@+id/Resched"
+        android:layout_alignStart="@+id/btn_reschedule_time"
         android:layout_marginStart="36dp" />
 
     <TextView
@@ -45,23 +38,24 @@
         android:id="@+id/textView6"
         android:layout_marginRight="60dp"
         android:layout_marginEnd="16dp"
-        android:layout_above="@+id/Resched"
-        android:layout_toStartOf="@+id/Resched" />
+        android:layout_above="@+id/btn_reschedule_time"
+        android:layout_toStartOf="@+id/btn_reschedule_time" />
 
     <Button
         android:text="Cancel Selected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/btn_cancel_time"
+        android:onClick="buttonListener"
         android:layout_above="@+id/textView8"
         android:layout_toEndOf="@+id/textView6" />
 
     <Button
         android:text="Reschedule Now"
-        android:onClick="toChooseDay"
+        android:onClick="buttonListener"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Resched"
+        android:id="@+id/btn_reschedule_time"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -69,18 +63,18 @@
         android:text="Load Upcoming Appointments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/getData"
+        android:id="@+id/btn_load_appointments"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:onClick="click" />
+        android:onClick="buttonListener" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/getData"
+        android:layout_below="@+id/btn_load_appointments"
         android:layout_alignParentStart="true"
-        android:id="@+id/upcoming"
-        android:layout_above="@+id/button" />
+        android:id="@+id/lstView_upcoming_events"
+        android:layout_above="@+id/btn_cancel_time" />
 
 </RelativeLayout>

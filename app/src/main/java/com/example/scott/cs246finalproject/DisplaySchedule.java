@@ -98,5 +98,5 @@ public class DisplaySchedule extends AppCompatActivity {
 
         return list;
     } */
-    public void click(View view){controller.calendar.getResults();}
+    public void getResults(View view){controller.calendar.getResults();}
 }

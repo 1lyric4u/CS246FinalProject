@@ -42,11 +42,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //populate list
-        //controller.calendar.listView = (ListView) findViewById(R.id.lstView_upcoming_events);
-        //controller.calendar.adapter = new ArrayAdapter<>(
-                //getApplicationContext(), R.layout.support_simple_spinner_dropdown_item);
-
         eventSelected = null;   // blank until item in list is selected
 
         listView = (ListView) findViewById(R.id.lstView_upcoming_events);

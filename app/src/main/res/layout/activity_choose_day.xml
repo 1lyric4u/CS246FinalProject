@@ -27,4 +27,14 @@
         android:layout_marginTop="18dp"
         android:id="@+id/calendar" />
 
+    <Button
+        android:text="Select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/button2"
+        android:onClick="select"/>
+
 </RelativeLayout>

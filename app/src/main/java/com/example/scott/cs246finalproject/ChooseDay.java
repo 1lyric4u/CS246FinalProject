@@ -1,7 +1,9 @@
 package com.example.scott.cs246finalproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
 
 import org.joda.time.DateTime;
@@ -24,7 +26,7 @@ public class ChooseDay extends AppCompatActivity {
         setContentView(R.layout.activity_choose_day);
 
         //initializes the calendarview
-        //initializeCalendar();
+        initializeCalendar();
     }
     public void initializeCalendar() {
         calendar = (CalendarView) findViewById(R.id.calendar);
@@ -37,6 +39,11 @@ public class ChooseDay extends AppCompatActivity {
                 CHOSEN_DAY = new DateTime(year, month, day, 0,0);
             }
         });
+    }
+
+    public void select(View view){
+        Intent intent = new Intent(this, DisplaySchedule.class);
+        startActivity(intent);
     }
 
 

@@ -43,7 +43,10 @@ public class ChooseDay extends AppCompatActivity {
 
     public void select(View view){
         Intent intent = new Intent(this, DisplaySchedule.class);
-        intent.putExtra(SELECTED_DAY, dateTime.toDate().getTime());
+        // Broken - dateTime appears to be null here:
+        // intent.putExtra(SELECTED_DAY, dateTime.toDate().getTime());
+        // For now, just sending through a testing Long value
+        intent.putExtra(SELECTED_DAY, 200000L);
 
         startActivity(intent);
     }

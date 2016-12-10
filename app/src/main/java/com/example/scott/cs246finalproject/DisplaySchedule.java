@@ -75,7 +75,7 @@ public class DisplaySchedule extends AppCompatActivity {
     }
 
     // execute controller method and send data onward
-    private void selectTime(View view){
+    public void selectTime(View view){
 
     }
 

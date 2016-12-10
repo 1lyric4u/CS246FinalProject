@@ -86,6 +86,14 @@ public class MainActivity extends Activity
         listView = (ListView) findViewById(R.id.lstView_upcoming_events);
         adapter = new ArrayAdapter<>(
                 getApplicationContext(), R.layout.support_simple_spinner_dropdown_item);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                eventSelected = listView.getItemAtPosition(i).toString();
+
+            }
+        });
 
         // Initialize credentials and service object.
         mCredential = GoogleAccountCredential.usingOAuth2(

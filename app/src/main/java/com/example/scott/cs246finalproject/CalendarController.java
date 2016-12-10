@@ -58,7 +58,8 @@ public class CalendarController {
      */
     public int getNumCredits() {
 
-        return 1;
+        return credits.getCount();
+        //return 1;
     }
 
     /**
@@ -67,6 +68,8 @@ public class CalendarController {
      * @param arrayAdapter
      */
     public void cancelAppointment(String date, ArrayAdapter<String> arrayAdapter) {
+        //change to reflect start and end dates of event this creates a 45 min appt
+        credits.addCredit(new DateTime(System.currentTimeMillis()), new DateTime(System.currentTimeMillis()+2700000));
         arrayAdapter.remove(date);
     }
 

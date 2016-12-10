@@ -74,13 +74,7 @@ public class DisplaySchedule extends AppCompatActivity {
 
     // execute controller method and send data onward
     private void selectTime(View view){
-        // build and populate intent
-        Intent intent = new Intent(this, CancelConfirm.class);
-        intent.putExtra(APPOINTMENT, listItemSelected);
 
-        // pass to CancelConfirm once selection is made
-        if(!listItemSelected.equals(EMPTY_VALUE))
-            startActivity(intent);
     }
 
     /* to be removed and replaced with a call to the controller for available times

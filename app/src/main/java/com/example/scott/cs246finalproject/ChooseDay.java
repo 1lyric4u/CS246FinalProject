@@ -19,12 +19,11 @@ public class ChooseDay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //sets the main layout of the activity
         setContentView(R.layout.activity_choose_day);
 
         //initializes the calendarview
-        initializeCalendar();
+        //initializeCalendar();
     }
     public void initializeCalendar() {
         calendar = (CalendarView) findViewById(R.id.calendar);

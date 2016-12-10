@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 eventSelected = adapterView.getAdapter().getItem(i).toString();
             }
         });
+        updateView();
     }
 
     // one entry point to handle every button the user may click
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }// end switch
+        // update view
+        updateView();
     }// end method
 
     // retrieves teacher's calendar info
@@ -93,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
     // send user to Choose Day page
     private void openChooseDay() {
-        //Intent intent = new Intent(this, ChooseDay.class);
+        Intent intent = new Intent(this, ChooseDay.class);
         // include necessary data
 
-        //startActivity(intent);
+        startActivity(intent);
     }
 
     //send user to Cancel Confirm page
@@ -114,14 +117,8 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // notify user of change
-                    Toast.makeText(getApplicationContext(), "Removing " + eventSelected + " now.", Toast.LENGTH_SHORT).show();
-
                     // notify controller of removed event   // <-- change this to work through controller
-                    adapter.remove(eventSelected);
-                    // update view                          // <-- change this to work through controller
 
-                    // update number of credits available   // <-- change this to work through controller
 
                     // now clear eventSelected for next use,
                     // this prevents a second button click from triggering a removal
@@ -143,6 +140,16 @@ public class MainActivity extends AppCompatActivity {
             // display window
             builder.create().show();
         }// end if
+    }
+
+    private void updateView() {
+        // if data has changed, update view
+
+        // update view                          // <-- change this to work through controller
+        if(null != eventSelected)
+            adapter.remove(eventSelected);
+        // update number of credits available   // <-- change this to work through controller
+
     }
 
     // to be removed

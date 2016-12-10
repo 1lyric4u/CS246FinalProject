@@ -17,6 +17,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
+ * This class connects the gui with the back end.
  * Created by scott on 11/1/16.
  */
 
@@ -51,26 +52,42 @@ public class CalendarController {
         return INSTANCE;
     }
 
-    // This may need a name change
+    /**
+     * Returns the number of credits currently generated
+     * @return
+     */
     public int getNumCredits() {
 
         return 1;
     }
 
-    // Should have a parameter, and needs documentation
+    /**
+     * Cancels a current appointment
+     * @param date
+     * @param arrayAdapter
+     */
     public void cancelAppointment(String date, ArrayAdapter<String> arrayAdapter) {
         arrayAdapter.remove(date);
     }
 
+    /**
+     * Creates a current appointment
+     * @param date
+     */
     public void createAppointment(String date) {
 
     }
 
+    /**
+     * Retrieves appointments currently available
+     * @param context
+     * @param listView
+     * @param arrayAdapter
+     */
     public void getResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
         // broken
         calendar.getResults((Activity)context, listView, arrayAdapter);
     }
-
 
     private void loadFakeDates(ArrayAdapter<String> adapter){
         if(firstLoad) {

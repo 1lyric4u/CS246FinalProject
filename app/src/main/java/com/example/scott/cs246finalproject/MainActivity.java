@@ -55,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         creditCount = (TextView) findViewById(R.id.txt_credit_count);
     }
 
-    // one entry point to handle every button the user may click
+    /**
+     * The entry point for all button clicks.
+     * They will be filtered and passed along to responsible methods.
+     * @param view
+     */
     public void buttonListener(View view){
         switch(view.getId()){
             case R.id.btn_load_appointments: {
@@ -76,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         }// end switch
     }// end method
 
-    // retrieves teacher's calendar info
+    /**
+     * Loads current calendar events into the listView
+     */
     public void loadUpcomingCalendarEvents(){
         controller.getResults(MainActivity.this, listView, adapter);
     }
@@ -89,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //send user to Cancel Confirm page
+    /**
+     * Provides a pop up dialog to confirm the users selection.
+     */
     public void openCancelConfirm () {
         // if eventSelected is null, no event has been selected in the listView
         // OR a previous event was just removed; nothing should trigger in either case

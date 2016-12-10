@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.scott.cs246finalproject.R;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -64,9 +64,6 @@ public class CalendarConnector extends Activity
 
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
-
-
-    private static final String TAG = CalendarConnector.class.getSimpleName();
 
     private CalendarController controller = CalendarController.getInstance();
 
@@ -126,7 +123,7 @@ public class CalendarConnector extends Activity
         if (EasyPermissions.hasPermissions(
                 context, Manifest.permission.GET_ACCOUNTS)) {
             String accountName = getPreferences(Context.MODE_PRIVATE)
-                    .getString(PREF_ACCOUNT_NAME, null);
+                    .getString(PREF_ACCOUNT_NAME, "medahardy@gmail.com");
             if (accountName != null) {
                 mCredential.setSelectedAccountName(accountName);
                 getResultsFromApi();
@@ -284,7 +281,7 @@ public class CalendarConnector extends Activity
             final int connectionStatusCode) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         Dialog dialog = apiAvailability.getErrorDialog(
-                this,
+                (Activity) context,
                 connectionStatusCode,
                 REQUEST_GOOGLE_PLAY_SERVICES);
         dialog.show();

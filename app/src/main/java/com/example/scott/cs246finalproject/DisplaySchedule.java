@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.api.client.util.DateTime;
 
@@ -51,9 +52,7 @@ public class DisplaySchedule extends AppCompatActivity {
         });
         //Setting listView and adapter now done by Connector
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
-        /*
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
-        */
 
         /// !!! !!! !!!
         //Need to parse ChooseDay.CHOSEN_DAY from String into DateTime chosen_day
@@ -76,8 +75,10 @@ public class DisplaySchedule extends AppCompatActivity {
 
     // execute controller method and send data onward
     public void selectTime(View view){
-
+        Toast.makeText(this, "Testing SelectTime", Toast.LENGTH_LONG).show();
     }
 
-    public void getResults(View view){controller.calendar.getResults(this, listView, arrayAdapter);}
+    public void getResults(View view){
+        controller.calendar.getResults(this, listView, arrayAdapter);
+    }
 }

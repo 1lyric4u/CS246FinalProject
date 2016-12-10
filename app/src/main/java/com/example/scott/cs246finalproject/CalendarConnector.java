@@ -54,6 +54,7 @@ public class CalendarConnector extends Activity
     private  ListView listView;
     private  ArrayAdapter<String> adapter;
     private Context context;
+    private Activity activity;
     public boolean isOneDay; //for pulling data from only one day, if false, will pull next 10 events
     public DateTime dateToDisplay;
 
@@ -76,15 +77,16 @@ public class CalendarConnector extends Activity
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
-    public void getResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
+    public void getResults(Activity activity, ListView listView, ArrayAdapter<String> arrayAdapter){
+
+        this.listView = listView;
+        this.adapter = arrayAdapter;
+        this.context = activity.getApplicationContext();
+        this.activity = activity;
         // Initialize credentials and service object.
         mCredential = GoogleAccountCredential.usingOAuth2(
                 context, Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff());
-
-        this.listView = listView;
-        this.adapter = arrayAdapter;
-        this.context = context;
 
         getResultsFromApi();
     }
@@ -122,7 +124,7 @@ public class CalendarConnector extends Activity
     private void chooseAccount() {
         if (EasyPermissions.hasPermissions(
                 context, Manifest.permission.GET_ACCOUNTS)) {
-            String accountName = getPreferences(Context.MODE_PRIVATE)
+            String accountName = activity.getPreferences(Context.MODE_PRIVATE)
                     .getString(PREF_ACCOUNT_NAME, "medahardy@gmail.com");
             if (accountName != null) {
                 mCredential.setSelectedAccountName(accountName);
@@ -304,7 +306,7 @@ public class CalendarConnector extends Activity
                     .build();
             // Initialize Calendar service with valid OAuth credentials
             Calendar service = new Calendar.Builder(transport, jsonFactory, mCredential)
-                    .setApplicationName("testconnectiontogoogle").build();
+                    .setApplicationName("Reschedule").build();
 
             // Iterate through entries in calendar list
             String pageToken = null;

@@ -79,6 +79,6 @@ public class DisplaySchedule extends AppCompatActivity {
     }
 
     public void getResults(View view){
-        controller.calendar.getResults(this, listView, arrayAdapter);
+        controller.calendar.getResults(DisplaySchedule.this, listView, arrayAdapter);
     }
 }

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     // retrieves teacher's calendar info
     public void loadUpcomingCalendarEvents(){
-        controller.getCalendarResults(this, listView, adapter);
+        controller.getCalendarResults(MainActivity.this, listView, adapter);
     }
 
     // send user to Choose Day page

@@ -1,5 +1,6 @@
 package com.example.scott.cs246finalproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -65,11 +66,9 @@ public class CalendarController {
 
     }
 
-    public void getCalendarResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
+    public void getResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
         // broken
-        // calendar.getResults(context, listView, arrayAdapter);
-
-        loadFakeDates(arrayAdapter);
+        calendar.getResults((Activity)context, listView, arrayAdapter);
     }
 
 

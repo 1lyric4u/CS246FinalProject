@@ -1,20 +1,27 @@
 package com.example.scott.cs246finalproject;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * Created by scott on 11/1/16.
  */
 
 public class CalendarController {
+    // for testing, remove this
+    private boolean firstLoad = true;
 
     // Class name for tagging in logging
     private static final String TAG = CalendarController.class.getSimpleName();
@@ -45,98 +52,39 @@ public class CalendarController {
 
     // This may need a name change
     public int getNumCredits() {
-        return credits.getCount();
+
+        return 1;
     }
 
     // Should have a parameter, and needs documentation
-    public void cancelAppointment(String toCancel) {
-        // Somehow create the event to pass to the calendar to delete
-        Event event = new Event(); // Needs change!
-
-        // Tell the calendarConnector to remove the event
-        //No longer needed with redesign -Shanna
-        //calendar.deleteEvent(event);
-
-        if (DEBUG) {
-            Log.i(TAG, "Connector's deleteEvent() finished");
-        }
-
-        // Add a credit, if applicable
-
-
-        // Update the app view
+    public void cancelAppointment(String date, ArrayAdapter<String> arrayAdapter) {
+        arrayAdapter.remove(date);
     }
 
-    public void createAppointment(String newAppt) {
-        //parse String into DateTime
-
-        // May need to check whether a credit is available, if cannot assume this is already checked
-        //Shanna - the cancel confirm view creates the Appointment using this function, and uses the
-        // credit. The credits have already been checked at this point. No need to mess with credits
-        // at all here, just create the Appointment.
-
-        // Tell the calendarConnector to add the event
-        if (DEBUG) {
-            Log.i(TAG, "Connector's addEvent() finished");
-        }
-
-        // Remove a credit (Credits may handle whether the event is too close or not)
-        //Shanna - This is handled by credits, and called directly from the view (as explained above)
-
-        // Update the app view
-
-        /* Scott - just testing Logging with the methods called below
-        calendar.isValidViewer("John Smith");
-        calendar.deleteEvent(new Event());
-        calendar.moveEvent(new Event());
-
-        credits.addCredit(new DateTime(1L));//Shanna - the addCredit function needs a start and end time for
-        // the canceled appt to caclulate the length of the lesson
-        credits.checkCredit(GregorianCalendar.getInstance().getTime()); // Shanna - expecets a DateTime
-        credits.useCredit(GregorianCalendar.getInstance().getTime()); //Shanna - expects a DateTime
-        */
-    }
-
-    // Method to get current appointments (or lessons?) (they are a part of)
-
-    // Method to get available appointments or time slots
-
-    // Method to get a specific appointment?
-
-    // This method may be incorrectly placed - individually activities may decide which view was
-    // acted on, and then call the appropriate function(s) in the controller
-    public void actionPerformed(AppCompatActivity activity, View view) {
-
-        // For testing purposes
-        if (view.getId() == R.id.buttonYes) {
-            System.out.println("matches");
-        } else {
-            System.out.println("failed");
-        }
-
-        switch (view.getId()) {
-
-            case R.id.buttonYes: // From CancelConfirm
-
-                // Remove appointment and add a credit (if applicable)
-
-            //case R.id.buttonNo: // From Cancel Confirm
-
-                // Return to Homepage
-
-        }
+    public void createAppointment(String date) {
 
     }
 
-    public void update(View v) {
-        // Do something
-        try{
-            throw new Exception("Demo exception");
-        }catch(Exception e){
-            Log.e(TAG, "Update view died");
-        }
+    public void getCalendarResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
+        // broken
+        // calendar.getResults(context, listView, arrayAdapter);
+
+        loadFakeDates(arrayAdapter);
     }
-    // added to satisfy Test class.. we need to see if this is needed or why this was called there
-    public void performAction(Button mockButtonCancelYes) {
+
+
+    private void loadFakeDates(ArrayAdapter<String> adapter){
+        if(firstLoad) {
+            // fake dates
+            List<String> dates = new ArrayList<>();
+            for (int i = 0; i < 10; i++) {
+                StringBuilder builder = new StringBuilder();
+                builder.append("Fake-Date ").append(i + 1).append(":00 PM");
+                dates.add(builder.toString());
+            }// end loop
+
+            adapter.addAll(dates);
+            firstLoad = false;
+        }// end if
     }
 }

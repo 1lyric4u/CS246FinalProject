@@ -51,8 +51,9 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class CalendarConnector extends Activity
         implements EasyPermissions.PermissionCallbacks {
     private GoogleAccountCredential mCredential;
-    public  ListView listView;
-    public  ArrayAdapter<String> adapter;
+    private  ListView listView;
+    private  ArrayAdapter<String> adapter;
+    private Context context;
     public boolean isOneDay; //for pulling data from only one day, if false, will pull next 10 events
     public DateTime dateToDisplay;
 
@@ -71,17 +72,23 @@ public class CalendarConnector extends Activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Initialize credentials and service object.
-        mCredential = GoogleAccountCredential.usingOAuth2(
-                getApplicationContext(), Arrays.asList(SCOPES))
-                .setBackOff(new ExponentialBackOff());
+
     }
 
     private void alert(String message){
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
-    public void getResults(){
+    public void getResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
+        // Initialize credentials and service object.
+        mCredential = GoogleAccountCredential.usingOAuth2(
+                context, Arrays.asList(SCOPES))
+                .setBackOff(new ExponentialBackOff());
+
+        this.listView = listView;
+        this.adapter = arrayAdapter;
+        this.context = context;
+
         getResultsFromApi();
     }
 
@@ -117,7 +124,7 @@ public class CalendarConnector extends Activity
     @AfterPermissionGranted(REQUEST_PERMISSION_GET_ACCOUNTS)
     private void chooseAccount() {
         if (EasyPermissions.hasPermissions(
-                this, Manifest.permission.GET_ACCOUNTS)) {
+                context, Manifest.permission.GET_ACCOUNTS)) {
             String accountName = getPreferences(Context.MODE_PRIVATE)
                     .getString(PREF_ACCOUNT_NAME, null);
             if (accountName != null) {
@@ -132,7 +139,7 @@ public class CalendarConnector extends Activity
         } else {
             // Request the GET_ACCOUNTS permission via a user dialog
             EasyPermissions.requestPermissions(
-                    this,
+                    context,
                     "This app needs to access your Google account (via Contacts).",
                     REQUEST_PERMISSION_GET_ACCOUNTS,
                     Manifest.permission.GET_ACCOUNTS);
@@ -201,7 +208,7 @@ public class CalendarConnector extends Activity
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(
-                requestCode, permissions, grantResults, this);
+                requestCode, permissions, grantResults, context);
     }
 
     /**
@@ -248,7 +255,7 @@ public class CalendarConnector extends Activity
         GoogleApiAvailability apiAvailability =
                 GoogleApiAvailability.getInstance();
         final int connectionStatusCode =
-                apiAvailability.isGooglePlayServicesAvailable(this);
+                apiAvailability.isGooglePlayServicesAvailable(context);
         return connectionStatusCode == ConnectionResult.SUCCESS;
     }
 
@@ -260,7 +267,7 @@ public class CalendarConnector extends Activity
         GoogleApiAvailability apiAvailability =
                 GoogleApiAvailability.getInstance();
         final int connectionStatusCode =
-                apiAvailability.isGooglePlayServicesAvailable(this);
+                apiAvailability.isGooglePlayServicesAvailable(context);
         if (apiAvailability.isUserResolvableError(connectionStatusCode)) {
             showGooglePlayServicesAvailabilityErrorDialog(connectionStatusCode);
         }
@@ -277,7 +284,7 @@ public class CalendarConnector extends Activity
             final int connectionStatusCode) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         Dialog dialog = apiAvailability.getErrorDialog(
-                CalendarConnector.this,
+                this,
                 connectionStatusCode,
                 REQUEST_GOOGLE_PLAY_SERVICES);
         dialog.show();

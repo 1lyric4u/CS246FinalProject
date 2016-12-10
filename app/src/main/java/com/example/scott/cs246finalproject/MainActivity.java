@@ -2,7 +2,6 @@ package com.example.scott.cs246finalproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.api.client.util.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayAdapter<String> adapter;
 
+    private TextView creditCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 eventSelected = adapterView.getAdapter().getItem(i).toString();
             }
         });
-        updateView();
+        creditCount = (TextView) findViewById(R.id.txt_credit_count);
     }
 
     // one entry point to handle every button the user may click
@@ -76,17 +74,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }// end switch
-        // update view
-        updateView();
     }// end method
 
     // retrieves teacher's calendar info
     public void loadUpcomingCalendarEvents(){
-        // this doesn't work yet.. - Scott
-        // controller.calendar.getResults();
-
-        // temporary measure to test other aspects of the app
-        loadFakeDates();
+        controller.getCalendarResults(this, listView, adapter);
     }
 
     // send user to Choose Day page
@@ -112,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // notify controller of removed event   // <-- change this to work through controller
-
-
+                    // notify controller of removed event
+                    controller.cancelAppointment(eventSelected, adapter);
+                    // update credits
+                    creditCount.setText("" + controller.getNumCredits());
                     // now clear eventSelected for next use,
                     // this prevents a second button click from triggering a removal
                     // until a new event date is chosen.
@@ -137,24 +130,5 @@ public class MainActivity extends AppCompatActivity {
         }// end if
     }
 
-    private void updateView() {
-        // if data has changed, update view
 
-        // update view                          // <-- change this to work through controller
-        if(null != eventSelected)
-            adapter.remove(eventSelected);
-        // update number of credits available   // <-- change this to work through controller
-
-    }
-
-    // to be removed
-    private void loadFakeDates(){
-        List<String> dates = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
-            StringBuilder builder = new StringBuilder();
-            builder.append("Fake-Date ").append(i + 1).append(":00 PM");
-            dates.add(builder.toString());
-        }// end loop
-        adapter.addAll(dates);
-    }
 }

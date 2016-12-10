@@ -50,9 +50,7 @@ public class DisplaySchedule extends AppCompatActivity {
             }// end override
         });
         //Setting listView and adapter now done by Connector
-        controller.calendar.listView = this.listView;
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
-        controller.calendar.adapter = this.arrayAdapter;
         /*
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
         */
@@ -81,22 +79,5 @@ public class DisplaySchedule extends AppCompatActivity {
 
     }
 
-    /* to be removed and replaced with a call to the controller for available times
-    private List<String> fakeTimes(){
-        List<String> list = new ArrayList<>();
-        Calendar today = GregorianCalendar.getInstance();
-        today.set(HOUR_OF_DAY, 0);
-        today.set(MINUTE, 0);
-        today.set(SECOND, 0);
-
-        for(int count = 0; count < 24 * 4; count++){
-            Date time = today.getTime();
-            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
-            list.add(sdf.format(time));
-            today.add(MINUTE, 15);
-        }// end loop
-
-        return list;
-    } */
-    public void getResults(View view){controller.calendar.getResults();}
+    public void getResults(View view){controller.calendar.getResults(this, listView, arrayAdapter);}
 }

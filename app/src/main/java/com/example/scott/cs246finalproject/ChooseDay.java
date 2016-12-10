@@ -3,7 +3,8 @@ package com.example.scott.cs246finalproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
-//import org.joda.time.DateTime;
+
+import org.joda.time.DateTime;
 
 public class ChooseDay extends AppCompatActivity {
     /* this view needs to be accessed by the "reschedule" button on the home page*/
@@ -13,7 +14,7 @@ public class ChooseDay extends AppCompatActivity {
     if not, send the user to an alert page. Also, send to alert page if date selected is Sun/Sat
      */
 
-    public static String CHOSEN_DAY;
+    public static DateTime CHOSEN_DAY;
     public CalendarView calendar;
 
     @Override
@@ -33,10 +34,7 @@ public class ChooseDay extends AppCompatActivity {
             @Override
 
             public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-                String monthString = Integer.toString(month);
-                String dayString = Integer.toString(day);
-                String yearString = Integer.toString(year);
-                CHOSEN_DAY = monthString + "/" + dayString + "/" + yearString;
+                CHOSEN_DAY = new DateTime(year, month, day, 0,0);
             }
         });
     }

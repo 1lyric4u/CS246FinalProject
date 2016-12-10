@@ -63,7 +63,7 @@ public class DisplaySchedule extends AppCompatActivity {
         // Don't forget that the DateTime needs to be 12:00 am in Mountain Time.
         // How will we deal with daylight savings? Does Gregorian Calendar handle that? -Shanna-Mae
         controller.calendar.isOneDay = true;
-        controller.calendar.dateToDisplay = null;
+        controller.calendar.dateToDisplay = new DateTime(ChooseDay.CHOSEN_DAY.toDate().getTime());
 
         // populate time availability from controller
        // arrayAdapter.addAll(fakeTimes());

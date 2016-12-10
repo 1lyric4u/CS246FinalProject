@@ -16,7 +16,9 @@ public class ChooseDay extends AppCompatActivity {
     if not, send the user to an alert page. Also, send to alert page if date selected is Sun/Sat
      */
 
-    public static DateTime CHOSEN_DAY;
+    public static final String SELECTED_DAY = "SELECTED_DAY";
+
+    private DateTime dateTime;
     public CalendarView calendar;
 
     @Override
@@ -32,17 +34,17 @@ public class ChooseDay extends AppCompatActivity {
         calendar = (CalendarView) findViewById(R.id.calendar);
         //sets the listener to be notified upon selected date change.
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
             @Override
-
             public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-                CHOSEN_DAY = new DateTime(year, month, day, 0,0);
+                dateTime = new DateTime(year, month, day, 0,0);
             }
         });
     }
 
     public void select(View view){
         Intent intent = new Intent(this, DisplaySchedule.class);
+        intent.putExtra(SELECTED_DAY, dateTime.toDate().getTime());
+
         startActivity(intent);
     }
 

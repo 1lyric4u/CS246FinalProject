@@ -120,7 +120,7 @@ public class CalendarController {
 
                 // Remove appointment and add a credit (if applicable)
 
-            case R.id.buttonNo: // From Cancel Confirm
+            //case R.id.buttonNo: // From Cancel Confirm
 
                 // Return to Homepage
 

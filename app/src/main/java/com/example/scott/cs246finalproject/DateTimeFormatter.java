@@ -18,7 +18,7 @@ public class DateTimeFormatter {
     }
 
     /**
-     * Returns a string from a DateTime object in the format of "year/month/day hour:minute-hour:minute"
+     * Returns a string from a DateTime object in the format of "year/month/day hour:minute"
      * @param dateTime
      * @return
      */
@@ -27,7 +27,7 @@ public class DateTimeFormatter {
     }
 
     /**
-     * Returns a string from a DateTime object in the format of "year/month/day hour:minute"
+     * Returns a string from a DateTime object in the format of "year/month/day hour:minute-hour:minute"
      * @param start
      * @param end
      * @return

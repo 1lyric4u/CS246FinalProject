@@ -23,10 +23,6 @@ import java.util.List;
 
 public class CalendarController {
 
-
-    // for testing, remove this
-    private boolean firstLoad = true;
-
     // Class name for tagging in logging
     private static final String TAG = CalendarController.class.getSimpleName();
 
@@ -41,12 +37,13 @@ public class CalendarController {
 
     // Also required for app. Should this be public or protected?
     //Shanna-I changed this to public, as credits has methods that need to be called by views
-    public Credits credits= new Credits();
+    public Credits credits;
 
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
         // May need to set up other things, however, such as the connector and credits
         calendar = new CalendarConnector();
+        credits= new Credits();
     }
 
     /** Get the single static instance */
@@ -94,18 +91,4 @@ public class CalendarController {
         calendar.getResults((Activity)context, listView, arrayAdapter);
     }
 
-    private void loadFakeDates(ArrayAdapter<String> adapter){
-        if(firstLoad) {
-            // fake dates
-            List<String> dates = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                StringBuilder builder = new StringBuilder();
-                builder.append("Fake-Date ").append(i + 1).append(":00 PM");
-                dates.add(builder.toString());
-            }// end loop
-
-            adapter.addAll(dates);
-            firstLoad = false;
-        }// end if
-    }
 }

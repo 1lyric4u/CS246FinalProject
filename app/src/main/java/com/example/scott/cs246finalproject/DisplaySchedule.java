@@ -109,7 +109,6 @@ public class DisplaySchedule extends Activity
         //31556952000 milsec/year, but no set milsec/month, so may need to use Gregorian Calendar class
         // Don't forget that the DateTime needs to be 12:00 am in Mountain Time.
         // How will we deal with daylight savings? Does Gregorian Calendar handle that? -Shanna-Mae
-        controller.calendar.isOneDay = true;
 
         Intent fromChooseDay = getIntent();
         long chosenDay = fromChooseDay.getLongExtra(ChooseDay.SELECTED_DAY, 0L);

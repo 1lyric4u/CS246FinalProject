@@ -9,9 +9,11 @@ import com.google.api.client.util.DateTime;
 
 public class Credit {
     private final static long ONEDAY = 86400000; // 1 day in milliseconds
-    public Credit(){dateTime = new DateTime(System.currentTimeMillis()); duration = 0;}
+
     public DateTime dateTime;
     public long duration;
+
+    public Credit(){dateTime = new DateTime(System.currentTimeMillis()); duration = 0;}
 
     public static boolean isTodayWithinOneDay(DateTime date){
 

@@ -20,7 +20,7 @@ public class Credits {
 
     private final static long ONEDAY = 86400000; // 1 day in milliseconds
 
-    private List<Credit> creditList = new ArrayList<>();
+    private List<Credit> creditList;
 
     public Credits(){
         creditList = new ArrayList<>();

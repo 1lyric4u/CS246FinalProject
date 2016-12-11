@@ -32,7 +32,7 @@ public class DateTimeFormatter {
      * @param end
      * @return
      */
-    public String format(DateTime start, DateTime end){
+    public static String format(DateTime start, DateTime end){
         return format(start) + "-" + formatTime(end);
     }
 

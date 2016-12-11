@@ -32,9 +32,6 @@ public class CalendarController {
     // Only instance possible, required for app so immediately initialized, and thread-safe
     private static final CalendarController INSTANCE = new CalendarController();
 
-    //Shanna-this was private, but I changed to public because mainActivity needs to access
-    public CalendarConnector calendar;
-
     // Also required for app. Should this be public or protected?
     //Shanna-I changed this to public, as credits has methods that need to be called by views
     public Credits credits;
@@ -42,7 +39,6 @@ public class CalendarController {
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
         // May need to set up other things, however, such as the connector and credits
-        calendar = new CalendarConnector();
         credits= new Credits();
     }
 
@@ -89,8 +85,7 @@ public class CalendarController {
      * @param arrayAdapter
      */
     public void getResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
-        // broken
-        calendar.getResults((Activity)context, listView, arrayAdapter);
+
     }
 
 }

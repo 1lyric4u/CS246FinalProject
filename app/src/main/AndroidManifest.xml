@@ -19,13 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplaySchedule"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <activity android:name=".ChooseDay"></activity>
-        <activity android:name=".ConfirmReschedule"></activity>
+        <activity android:name=".DisplaySchedule" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <activity android:name=".ChooseDay" />
+        <activity android:name=".ConfirmReschedule" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".EMail"></activity>
     </application>
 
 </manifest>

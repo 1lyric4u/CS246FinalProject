@@ -356,17 +356,27 @@ public class MainActivity extends Activity
                     .setOrderBy("startTime")
                     .setSingleEvents(true)
                     .execute();
+            for(int i=0; i<events.size(); i++){
+                //if(!events.)
+            }
             List<Event> items = events.getItems();
 
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
+                DateTime end = event.getEnd().getDateTime();
+                String newEvent = new String();
                 if (start == null) {
                     // All-day events don't have start times, so just use
                     // the start date.
-                    start = event.getStart().getDate();
+                    start = new DateTime(event.getStart().getDate().getValue());
                 }
-                eventStrings.add(
-                        String.format("%s (%s)", event.getSummary(), start));
+                if(end != null){
+                    newEvent = DateTimeFormatter.format(start,end);
+                }
+                else{
+                    newEvent = DateTimeFormatter.format(new org.joda.time.DateTime(start));
+                }
+                eventStrings.add(newEvent);
             }
             return eventStrings;
         }

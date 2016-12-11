@@ -32,8 +32,10 @@ public class DateTimeFormatter {
      * @param end
      * @return
      */
-    public String format(DateTime start, DateTime end){
-        return format(start) + "-" + formatTime(end);
+    public static String format(com.google.api.client.util.DateTime start, com.google.api.client.util.DateTime end){
+        DateTime startGood = new DateTime(start.getValue());
+        DateTime endGood = new DateTime(end.getValue());
+        return format(startGood) + "-" + formatTime(endGood);
     }
 
     /**

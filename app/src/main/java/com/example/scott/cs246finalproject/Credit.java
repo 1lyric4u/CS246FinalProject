@@ -1,6 +1,7 @@
 package com.example.scott.cs246finalproject;
 
-import org.joda.time.DateTime;
+
+import com.google.api.client.util.DateTime;
 
 /**
  * Created by Shanna on 11/19/2016.
@@ -17,7 +18,7 @@ public class Credit {
 
     public static boolean isTodayWithinOneDay(DateTime date){
 
-        if(System.currentTimeMillis()+ONEDAY < date.getMillis()){
+        if(System.currentTimeMillis()+ONEDAY < date.getValue()){
             return true;
         }
         else{ return false;}

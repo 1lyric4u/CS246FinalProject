@@ -34,7 +34,7 @@ public class ConfirmReschedule extends AppCompatActivity {
         controller.createAppointment(newAppt);
 
         // use selected credit
-        DateTime oldAppt = new DateTime(listItemSelected); // not sure how this parses
+        org.joda.time.DateTime oldAppt = DateTimeFormatter.parse(listItemSelected)[0]; // not sure how this parses
         controller.credits.useCredit(oldAppt);
 
         //send to homepage
@@ -64,9 +64,9 @@ public class ConfirmReschedule extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);  // apply adapter to listView
 
         // parse String appointment into DateTime
-        DateTime newAppt = new DateTime(DisplaySchedule.APPOINTMENT);//not sure how this will parse
+        org.joda.time.DateTime newAppt = DateTimeFormatter.parse(DisplaySchedule.APPOINTMENT)[0];//not sure how this will parse
 
         //add available credits to list
-        arrayAdapter.addAll(controller.credits.checkCredit(newAppt).toString());
+        arrayAdapter.addAll(controller.credits.checkCredit(new DateTime(newAppt.getMillis())).toString());
     }
 }

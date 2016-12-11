@@ -34,7 +34,7 @@ public class EMail extends AppCompatActivity {
 
     public void sendMessage(View view){
         Log.i("Send email", "");
-        String[] TO = {"medahardy@gmail.com"};
+        String[] TO = {"shannamae.slight@gmail.com"};
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 

@@ -33,7 +33,6 @@ public class CalendarController {
     private static final CalendarController INSTANCE = new CalendarController();
 
     //Shanna-this was private, but I changed to public because mainActivity needs to access
-    public CalendarConnector calendar;
 
     // Also required for app. Should this be public or protected?
     //Shanna-I changed this to public, as credits has methods that need to be called by views
@@ -42,7 +41,6 @@ public class CalendarController {
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
         // May need to set up other things, however, such as the connector and credits
-        calendar = new CalendarConnector();
         credits= new Credits();
     }
 
@@ -69,7 +67,7 @@ public class CalendarController {
     public void cancelAppointment(String date, ArrayAdapter<String> arrayAdapter) {
 
         //Change to reflect start and end dates of event. This creates a 45 min appt
-        credits.addCredit(new DateTime(System.currentTimeMillis()), new DateTime(System.currentTimeMillis()+2700000));
+        credits.addCredit(DateTimeFormatter.parse(date)[0], DateTimeFormatter.parse(date)[1]);
         // update view
         arrayAdapter.remove(date);
     }
@@ -89,8 +87,7 @@ public class CalendarController {
      * @param arrayAdapter
      */
     public void getResults(Context context, ListView listView, ArrayAdapter<String> arrayAdapter){
-        // broken
-        calendar.getResults((Activity)context, listView, arrayAdapter);
+
     }
 
 }

@@ -35,6 +35,7 @@ import com.google.api.client.util.DateTime;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.Events;
 
 import java.io.IOException;
@@ -356,10 +357,19 @@ public class MainActivity extends Activity
                     .setOrderBy("startTime")
                     .setSingleEvents(true)
                     .execute();
-            for(int i=0; i<events.size(); i++){
-                //if(!events.)
-            }
             List<Event> items = events.getItems();
+            for(int i=0; i<items.size(); i++){
+                EventAttendee student;
+                List<EventAttendee> attendees = items.get(i).getAttendees();
+                if(attendees !=null) {
+                    for (int j = 0; j < attendees.size(); j++) {
+                        if (attendees.get(j).getEmail() != PREF_ACCOUNT_NAME + "@gmail.com") {
+                            items.remove(i);
+                        }
+                    }
+                }
+                else{ items.remove(i);}
+            }
 
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();

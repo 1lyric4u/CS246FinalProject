@@ -52,4 +52,10 @@ public class EMail extends AppCompatActivity {
             Toast.makeText(this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    public void cancel(View view){
+
+        finish();
+    }
 }

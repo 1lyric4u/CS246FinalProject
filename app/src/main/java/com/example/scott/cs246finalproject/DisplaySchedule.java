@@ -79,7 +79,9 @@ public class DisplaySchedule extends Activity
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
 
-    public void getResults(View view){getResultsFromApi();}
+    public void getResults(View view){
+        getResultsFromApi();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -473,5 +475,17 @@ public class DisplaySchedule extends Activity
     //??? What's with the Toast???
     public void selectTime(View view){
         Toast.makeText(this, "Testing SelectTime", Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * This sends opens a window to send a message to the instructor
+     * @param subject
+     * @param body
+     */
+    private void sendMessage(String subject, String body){
+        Intent intent = new Intent(this, EMail.class);
+        intent.putExtra(EMail.SUBJECT, subject);
+        intent.putExtra(EMail.BODY, body);
+        startActivity(intent);
     }
 }

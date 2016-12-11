@@ -472,6 +472,9 @@ public class MainActivity extends Activity
                     controller.cancelAppointment(eventSelected, adapter);
                     // update credits
                     creditCount.setText("" + controller.getNumCredits());
+
+                    String msg = String.format("Appointment set for %s is canceled.", eventSelected);
+                    //sendMessage("Appointment Cancelation", msg);  // uncomment for actual use
                     // now clear eventSelected for next use,
                     // this prevents a second button click from triggering a removal
                     // until a new event date is chosen.
@@ -492,6 +495,13 @@ public class MainActivity extends Activity
             // display window
             builder.create().show();
         }// end if
+    }
+
+    private void sendMessage(String subject, String body){
+        Intent intent = new Intent(this, EMail.class);
+        intent.putExtra(EMail.SUBJECT, subject);
+        intent.putExtra(EMail.BODY, body);
+        startActivity(intent);
     }
 
 

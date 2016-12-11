@@ -22,6 +22,8 @@ import java.util.List;
  */
 
 public class CalendarController {
+
+
     // for testing, remove this
     private boolean firstLoad = true;
 
@@ -39,7 +41,7 @@ public class CalendarController {
 
     // Also required for app. Should this be public or protected?
     //Shanna-I changed this to public, as credits has methods that need to be called by views
-    public Credits credits;
+    public Credits credits= new Credits();
 
     private CalendarController() {
         // Sole purpose is to prevent additional instantiation
@@ -68,7 +70,7 @@ public class CalendarController {
      * @param arrayAdapter
      */
     public void cancelAppointment(String date, ArrayAdapter<String> arrayAdapter) {
-        //change to reflect start and end dates of event this creates a 45 min appt
+        //Change to reflect start and end dates of event. This creates a 45 min appt
         credits.addCredit(new DateTime(System.currentTimeMillis()), new DateTime(System.currentTimeMillis()+2700000));
         arrayAdapter.remove(date);
     }

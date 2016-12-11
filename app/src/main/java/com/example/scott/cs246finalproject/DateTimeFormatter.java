@@ -17,10 +17,21 @@ public class DateTimeFormatter {
         return String.format("%s:%s", dateTime.getHourOfDay(), dateTime.getMinuteOfHour());
     }
 
+    /**
+     * Returns a string from a DateTime object in the format of "year/month/day hour:minute-hour:minute"
+     * @param dateTime
+     * @return
+     */
     public static String format(DateTime dateTime){
         return formatDate(dateTime) + " " + formatTime(dateTime);
     }
 
+    /**
+     * Returns a string from a DateTime object in the format of "year/month/day hour:minute"
+     * @param start
+     * @param end
+     * @return
+     */
     public String format(DateTime start, DateTime end){
         return format(start) + "-" + formatTime(end);
     }

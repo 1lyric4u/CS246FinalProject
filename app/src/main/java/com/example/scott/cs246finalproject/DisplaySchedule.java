@@ -401,6 +401,7 @@ public class DisplaySchedule extends Activity
                 add.setEnd(addEnd);
                 //add event to list
                 possibleEvents.add(add);
+                startIndex = new DateTime(startIndex.getValue()+900000); // Increment by 15 min
             }
             //remove events that are unavailable
             Event possible;
@@ -409,10 +410,14 @@ public class DisplaySchedule extends Activity
                 possible = possibleEvents.get(i);
                 for(int j = 0; j < teacherEvents.size(); j++){
                     if(teacherEvents.get(j).getEnd().getDateTime().getValue() <
-                            possible.getStart().getDateTime().getValue()
-                            && possible.getEnd().getDateTime().getValue()
-                            < teacherEvents.get(j+1).getStart().getDateTime().getValue()){
-                        items.add(possible);
+                            possible.getStart().getDateTime().getValue()){
+                        if(j+1< teacherEvents.size()) {
+                            if (possible.getEnd().getDateTime().getValue()
+                                    < teacherEvents.get(j + 1).getStart().getDateTime().getValue()) {
+                                items.add(possible);
+                            }
+                        }
+                        else{ items.add(possible);}
                     }
                 }
             }

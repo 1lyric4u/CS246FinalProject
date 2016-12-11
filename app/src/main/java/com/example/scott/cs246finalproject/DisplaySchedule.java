@@ -470,6 +470,7 @@ public class DisplaySchedule extends Activity
     }
 
     // execute controller method and send data onward
+    //??? What's with the Toast???
     public void selectTime(View view){
         Toast.makeText(this, "Testing SelectTime", Toast.LENGTH_LONG).show();
     }

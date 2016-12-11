@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CS246FinalProject.iml" filepath="$PROJECT_DIR$/CS246FinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/Reschedule.iml" filepath="$PROJECT_DIR$/Reschedule.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
